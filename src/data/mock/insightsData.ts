@@ -1,0 +1,121 @@
+import type { KIInsight } from '../../types';
+
+export const insightsData: KIInsight[] = [
+  // Positive insights
+  {
+    id: 'ins-001',
+    type: 'pattern',
+    severity: 'positive',
+    title: 'Schlaf verbessert sich in der Follikelphase',
+    description: 'Dein Schlaf-Score ist in den letzten 3 Zyklen in der Follikelphase um durchschnittlich 12% gestiegen. Dieses biphasische Muster ist physiologisch erwartet und zeigt einen gesunden Zyklus.',
+    date: '2026-05-15',
+    actionableHint: 'Nutze deine höhere Energie in dieser Phase für intensive Trainings oder wichtige Projekte.',
+    pinned: true,
+  },
+  {
+    id: 'ins-002',
+    type: 'pattern',
+    severity: 'positive',
+    title: 'HRV-Baseline stabil auf gutem Niveau',
+    description: 'Deine HRV-Baseline von 45ms liegt im optimalen Bereich für dein Alter. In den letzten 6 Wochen ist sie sogar leicht gestiegen (+3ms), was auf verbesserte Erholung hindeutet.',
+    date: '2026-05-10',
+    actionableHint: 'Weiter so! Deine aktuellen Schlaf- und Bewegungsgewohnheiten zeigen positive Effekte.',
+  },
+  {
+    id: 'ins-003',
+    type: 'recommendation',
+    severity: 'positive',
+    title: 'Regelmäßiger Zyklus erkannt',
+    description: 'In den letzten 5 Zyklen lag deine Zykluslänge konstant bei 28-30 Tagen. Das ist ein Zeichen für eine stabile hormonelle Balance.',
+    date: '2026-05-05',
+    actionableHint: 'Dein Zyklus ist sehr vorhersehbar – perfekt für die Familienplanung.',
+  },
+
+  // Info / Pattern insights
+  {
+    id: 'ins-004',
+    type: 'pattern',
+    severity: 'info',
+    title: 'Temperaturmuster bestätigt Ovulation',
+    description: 'Das biphasische Temperaturmuster der letzten 3 Zyklen bestätigt eine ovulatorische Aktivität. Der Anstieg von Ø 36.3°C auf Ø 36.8°C post-ovulatorisch entspricht der Sensiplan-Norm.',
+    date: '2026-05-14',
+    actionableHint: 'Deine Decklinie liegt heute bei 36.6°C. Tag 14 hat diesen Schwellenwert überschritten.',
+  },
+  {
+    id: 'ins-005',
+    type: 'pattern',
+    severity: 'info',
+    title: 'Muster: HRV steigt in Follikelphase',
+    description: 'In allen 6 analysierten Zyklen ist deine HRV in den ersten 2 Wochen höher als in der Lutealphase. Dieser Unterschied beträgt durchschnittlich 8ms (46ms vs. 38ms).',
+    date: '2026-05-08',
+    actionableHint: 'Plane intensive Workouts in die Follikelphase (Tag 6-13), leichtere Einheiten in die Lutealphase.',
+  },
+  {
+    id: 'ins-006',
+    type: 'recommendation',
+    severity: 'info',
+    title: 'Schlafdauer-Tipp für Lutealphase',
+    description: 'In deiner Lutealphase schläfst du durchschnittlich 28 Minuten weniger als in anderen Phasen, obwohl dein Körper mehr Erholung braucht. Progesteron erhöht den Schlafbedarf.',
+    date: '2026-04-28',
+    actionableHint: '30 Minuten früher ins Bett in den letzten 10 Tagen deines Zyklus kann deine Energie signifikant verbessern.',
+  },
+
+  // Warning insights
+  {
+    id: 'ins-007',
+    type: 'anomaly',
+    severity: 'warning',
+    title: 'HRV 20% unter Baseline in KW19',
+    description: 'Deine HRV war vom 4.-11. Mai durchschnittlich 36ms – das sind 20% unter deiner Baseline von 45ms. Kombiniert mit reduziertem Tiefschlaf deutet das auf erhöhte körperliche oder mentale Belastung hin.',
+    date: '2026-05-11',
+    actionableHint: 'Reduziere intensive Trainingseinheiten diese Woche und priorisiere Schlaf. Magnesium am Abend kann helfen.',
+    pinned: true,
+  },
+  {
+    id: 'ins-008',
+    type: 'warning',
+    severity: 'warning',
+    title: 'Temperaturschwankung außerhalb der Norm',
+    description: 'An 3 Tagen im letzten Zyklus (Tag 18-20) war deine Temperatur 0.2°C über dem Erwartungswert, ohne dass eine Erkältung notiert wurde. Mögliche Ursachen: Schlechter Schlaf, Alkohol, Stress.',
+    date: '2026-04-20',
+    actionableHint: 'Notiere künftig störende Faktoren (Alkohol, Schlafmangel) im Tageseintrag, damit die KI diese herausrechnen kann.',
+  },
+  {
+    id: 'ins-009',
+    type: 'anomaly',
+    severity: 'warning',
+    title: 'Stimmungsschwankungen in Lutealphase verstärkt',
+    description: 'In den letzten 2 Zyklen hast du in der Lutealphase (Tag 17-29) häufiger "PMS" und "Stimmungsschwankungen" notiert als in früheren Zyklen. Durchschnitt: 4.2 Tage mit PMS-Symptomen vs. 2.1 Tage zuvor.',
+    date: '2026-05-03',
+    actionableHint: 'Omega-3 und B6 in der zweiten Zyklushälfte können PMS-Symptome lindern. Sprich mit deiner Gynäkologin.',
+  },
+
+  // Alert insights
+  {
+    id: 'ins-010',
+    type: 'anomaly',
+    severity: 'alert',
+    title: 'Möglicher anovulatorischer Zyklus vor 3 Monaten',
+    description: 'Im Februar-Zyklus fehlt das charakteristische Temperatur-Shift nach Tag 14. Die Temperatur blieb konstant bei 36.3-36.4°C ohne den erwarteten Anstieg auf >36.6°C. Das könnte auf einen anovulatorischen Zyklus hindeuten.',
+    date: '2026-02-28',
+    actionableHint: 'Ein einzelner anovulatorischer Zyklus ist normal (Stress, Reisen). Wenn dies häufiger vorkommt, wende dich an deine Gynäkologin.',
+  },
+  {
+    id: 'ins-011',
+    type: 'anomaly',
+    severity: 'alert',
+    title: 'Verkürzter Zyklus erkannt',
+    description: 'Der Zyklus von März-April 2026 war nur 24 Tage lang – deutlich unter deinem Durchschnitt von 29 Tagen. Zusammen mit dem HRV-Einbruch in dieser Zeit könnte das auf erhöhten Stress hinweisen.',
+    date: '2026-04-05',
+    actionableHint: 'Zyklen unter 24 Tagen oder über 35 Tagen sollten dokumentiert und bei häufigem Auftreten ärztlich abgeklärt werden.',
+  },
+  {
+    id: 'ins-012',
+    type: 'warning',
+    severity: 'alert',
+    title: 'Schlafqualität kritisch niedrig (KW15)',
+    description: 'In der Woche vom 6.-12. April lag dein Schlaf-Score bei durchschnittlich 52/100 – das schlechteste Ergebnis der letzten 6 Monate. Tiefschlaf war mit Ø 0.4h besonders betroffen.',
+    date: '2026-04-12',
+    actionableHint: 'Überprüfe deine Schlafhygiene: Bildschirmzeit, Raumtemperatur, Koffein-Cutoff. Konsistente Schlafzeiten sind der wichtigste Faktor.',
+  },
+];
