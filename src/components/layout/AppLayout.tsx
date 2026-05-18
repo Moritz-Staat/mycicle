@@ -1,4 +1,3 @@
-
 import { Outlet, useLocation } from 'react-router-dom';
 import { Sidebar, BottomNav } from './Sidebar';
 import { Header } from './Header';
@@ -15,7 +14,7 @@ export function AppLayout() {
   const title = pageTitles[location.pathname] || 'mycicle';
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0">
         <Header title={title} />
@@ -30,7 +29,7 @@ export function AppLayout() {
 
 export function AuthLayout() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <Outlet />
     </div>
   );

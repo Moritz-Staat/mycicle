@@ -1,4 +1,4 @@
-import type { CycleDay, CyclePhase } from '../types';
+import type { CycleDay, CyclePhase, WearableDay } from '../types';
 
 const TODAY = '2026-05-18';
 
@@ -138,4 +138,145 @@ export function formatDate(dateStr: string): string {
 export function formatShortDate(dateStr: string): string {
   const d = new Date(dateStr);
   return d.toLocaleDateString('de-DE', { day: 'numeric', month: 'short' });
+}
+
+// ============================================================
+// V2 additions: Multi-cycle overlay + confidence band
+// ============================================================
+
+
+export interface OverlayDataPoint {
+  day: number;
+  avg: number | null;
+  [key: string]: number | null;
+}
+
+export interface ConfidenceBandPoint {
+  label: string;
+  median: number | null;
+  band: number | null;
+}
+
+/**
+ * Split cycleHistory into individual cycles.
+ * A new cycle starts when dayOfCycle === 1.
+ */
+export function splitIntoCycles(data: CycleDay[]): CycleDay[][] {
+  const sorted = [...data].sort((a, b) => a.date.localeCompare(b.date));
+  const cycles: CycleDay[][] = [];
+  let current: CycleDay[] = [];
+
+  for (const day of sorted) {
+    if (day.dayOfCycle === 1 && current.length > 0) {
+      cycles.push(current);
+      current = [];
+    }
+    current.push(day);
+  }
+  if (current.length > 0) cycles.push(current);
+  return cycles;
+}
+
+/**
+ * Build overlay data for recharts.
+ * Returns array of { day, cycle0, cycle1, ..., avg }
+ */
+export function buildOverlayData(
+  cycles: CycleDay[][],
+  metric: 'temperature' | 'hrv',
+  wearableHistory?: WearableDay[]
+): OverlayDataPoint[] {
+  const maxLen = 30;
+  const wearMap = new Map((wearableHistory ?? []).map((d) => [d.date, d]));
+
+  const result: OverlayDataPoint[] = [];
+
+  for (let day = 1; day <= maxLen; day++) {
+    const point: OverlayDataPoint = { day, avg: null };
+
+    const values: number[] = [];
+    cycles.forEach((cycle, i) => {
+      const cycleDay = cycle.find((d) => d.dayOfCycle === day);
+      let val: number | null = null;
+
+      if (metric === 'temperature' && cycleDay?.temperature !== undefined) {
+        val = cycleDay.temperature;
+      } else if (metric === 'hrv' && cycleDay) {
+        const wear = wearMap.get(cycleDay.date);
+        if (wear) val = wear.hrv;
+      }
+
+      point[`cycle${i}`] = val;
+      if (val !== null) values.push(val);
+    });
+
+    point.avg = values.length > 0
+      ? parseFloat((values.reduce((a, b) => a + b, 0) / values.length).toFixed(2))
+      : null;
+
+    result.push(point);
+  }
+
+  return result;
+}
+
+export function normalPDF(x: number, mean: number, std: number): number {
+  const exp = -0.5 * Math.pow((x - mean) / std, 2);
+  return (1 / (std * Math.sqrt(2 * Math.PI))) * Math.exp(exp);
+}
+
+/**
+ * Build confidence band for the next 20 days.
+ * Returns array of { label, median, band } where band is probability density (normalized 0-1).
+ */
+export function calculateConfidenceBand(cycleHistory: CycleDay[]): ConfidenceBandPoint[] {
+  // Find start dates of each cycle
+  const sorted = [...cycleHistory].sort((a, b) => a.date.localeCompare(b.date));
+  const startDates = sorted.filter((d) => d.dayOfCycle === 1).map((d) => new Date(d.date));
+
+  // Calculate cycle lengths
+  const lengths: number[] = [];
+  for (let i = 1; i < startDates.length; i++) {
+    const diff = Math.round(
+      (startDates[i].getTime() - startDates[i - 1].getTime()) / (1000 * 60 * 60 * 24)
+    );
+    if (diff > 20 && diff < 50) lengths.push(diff);
+  }
+
+  const mean = lengths.length > 0
+    ? lengths.reduce((a, b) => a + b, 0) / lengths.length
+    : 29;
+  const std = lengths.length > 1
+    ? Math.sqrt(lengths.map((l) => Math.pow(l - mean, 2)).reduce((a, b) => a + b, 0) / lengths.length)
+    : 1.5;
+
+  const lastStart = startDates[startDates.length - 1] ?? new Date('2026-05-05');
+  const today = new Date('2026-05-18');
+  const daysInCycle = Math.round((today.getTime() - lastStart.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+
+  const result: ConfidenceBandPoint[] = [];
+
+  for (let offset = 0; offset <= 20; offset++) {
+    const futureDay = new Date(today);
+    futureDay.setDate(futureDay.getDate() + offset);
+
+    const label = offset === 0
+      ? 'Heute'
+      : futureDay.toLocaleDateString('de-DE', { day: 'numeric', month: 'short' });
+
+    const dayOfCycleAtPoint = daysInCycle + offset;
+
+    const rawPdf = normalPDF(dayOfCycleAtPoint, mean, std);
+    // Normalize to 0-1 range using max possible value
+    const maxPdf = normalPDF(mean, mean, std);
+    const normalized = parseFloat((rawPdf / maxPdf).toFixed(3));
+
+    result.push({
+      label,
+      median: normalized > 0.05 ? normalized : null,
+      band: normalized > 0.01 ? normalized : null,
+    });
+  }
+
+  return result;
 }

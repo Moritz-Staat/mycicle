@@ -20,6 +20,8 @@ import { DayEntrySlideOver } from '../components/DayEntrySlideOver';
 import { Badge } from '../components/ui/Badge';
 import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard, Skeleton } from '../components/ui/Skeleton';
+import { SymptomHeatmap } from '../components/charts/SymptomHeatmap';
+import { ConfidenceBandChart } from '../components/charts/ConfidenceBandChart';
 
 export default function Dashboard() {
   const { cycleHistory } = useCycleStore();
@@ -68,16 +70,16 @@ export default function Dashboard() {
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
             <div className="flex items-center gap-3">
-              <h2 className="text-3xl font-bold text-gray-900">Tag {today.dayOfCycle}</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Tag {today.dayOfCycle}</h2>
               <Badge color={phaseColors[today.phase] ?? 'slate'} size="md">
                 {getPhaseLabel(today.phase)}
               </Badge>
             </div>
-            <p className="text-sm text-gray-500 mt-1">{formatDate(today.date)}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{formatDate(today.date)}</p>
           </div>
           <button
             onClick={() => setSelectedDay(today)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-rose-200 text-rose-600 hover:bg-rose-50 text-sm font-medium transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-rose-200 dark:border-rose-800 text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 text-sm font-medium transition-colors"
           >
             <Calendar size={16} />
             Tageseintrag
@@ -129,17 +131,20 @@ export default function Dashboard() {
       {/* Temperature Chart */}
       <TemperatureChart cycleData={cycleHistory} />
 
-      {/* Calendar + Fertile Window */}
+      {/* Calendar + Fertile Window + Confidence Band */}
       <div className="grid md:grid-cols-2 gap-6">
         <CycleCalendar
           cycleData={cycleHistory}
           onDayClick={setSelectedDay}
         />
-        <FertileWindowCard
-          cycleData={cycleHistory}
-          currentDay={today?.dayOfCycle ?? 14}
-          predictedOvulation={14}
-        />
+        <div className="space-y-6">
+          <FertileWindowCard
+            cycleData={cycleHistory}
+            currentDay={today?.dayOfCycle ?? 14}
+            predictedOvulation={14}
+          />
+          <ConfidenceBandChart />
+        </div>
       </div>
 
       {/* Cycle Progress */}
@@ -150,6 +155,9 @@ export default function Dashboard() {
 
       {/* Cycle History */}
       <CycleHistory cycleData={cycleHistory} />
+
+      {/* Symptom Heatmap */}
+      <SymptomHeatmap />
 
       {/* Day Entry Slide-over */}
       <DayEntrySlideOver

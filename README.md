@@ -69,3 +69,12 @@ src/
 | 5 | KI-Insights (Feed, Anomalie-Banner, HealthScore, Empfehlungen) |
 | 6 | Partner-Ansicht (Login, Ampel, Bildungsinhalt, FamilyPlanning) |
 | 7 | Polish (DemoModeBanner, OnboardingTour, PageTransition, Pitch) |
+
+## V2 Features
+
+- ✨ KI-Chat-Interface mit 6 vorbereiteten Demo-Konversationen
+- 📄 Echter PDF-Arzt-Export (jsPDF, 4 Seiten)
+- 🌙 Dark Mode (System-Präferenz + manueller Toggle)
+- 🔔 Notification Center mit 8 simulierten Push-Benachrichtigungen
+- 📊 Symptom-Heatmap (GitHub-Style Jahresübersicht, 3 Ansichtsmodi)
+- 📈 Multi-Zyklus-Overlay + Konfidenzband-Prognose

@@ -4,6 +4,8 @@ import { AppLayout, AuthLayout } from './components/layout/AppLayout';
 import { DemoModeBanner } from './components/DemoModeBanner';
 import { OnboardingTour } from './components/OnboardingTour';
 import { PageTransition } from './components/PageTransition';
+import { AIChatButton } from './components/AIChat/AIChatButton';
+import { AIChatDrawer } from './components/AIChat/AIChatDrawer';
 import Dashboard from './pages/Dashboard';
 import Wearables from './pages/Wearables';
 import Insights from './pages/Insights';
@@ -13,26 +15,37 @@ import Pitch from './pages/Pitch';
 
 function AnimatedRoutes() {
   const location = useLocation();
+  const isPitch = location.pathname === '/pitch';
+
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        {/* Main app routes */}
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<PageTransition><Dashboard /></PageTransition>} />
-          <Route path="/wearables" element={<PageTransition><Wearables /></PageTransition>} />
-          <Route path="/insights" element={<PageTransition><Insights /></PageTransition>} />
-          <Route path="/partner" element={<PageTransition><Partner /></PageTransition>} />
-        </Route>
+    <>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          {/* Main app routes */}
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<PageTransition><Dashboard /></PageTransition>} />
+            <Route path="/wearables" element={<PageTransition><Wearables /></PageTransition>} />
+            <Route path="/insights" element={<PageTransition><Insights /></PageTransition>} />
+            <Route path="/partner" element={<PageTransition><Partner /></PageTransition>} />
+          </Route>
 
-        {/* Auth routes */}
-        <Route element={<AuthLayout />}>
-          <Route path="/partner-login" element={<PageTransition><PartnerLogin /></PageTransition>} />
-        </Route>
+          {/* Auth routes */}
+          <Route element={<AuthLayout />}>
+            <Route path="/partner-login" element={<PageTransition><PartnerLogin /></PageTransition>} />
+          </Route>
 
-        {/* Standalone routes */}
-        <Route path="/pitch" element={<Pitch />} />
-      </Routes>
-    </AnimatePresence>
+          {/* Standalone routes */}
+          <Route path="/pitch" element={<Pitch />} />
+        </Routes>
+      </AnimatePresence>
+
+      {!isPitch && (
+        <>
+          <AIChatButton />
+          <AIChatDrawer />
+        </>
+      )}
+    </>
   );
 }
 
