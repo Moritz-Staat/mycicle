@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# mycicle – KI-gestützte Zyklusgesundheits-App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Demo einer React/TypeScript App für Zyklusmonitoring mit KI-Insights und Wearable-Integration.
 
-Currently, two official plugins are available:
+## Demo-Zugangsdaten
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Nutzer | E-Mail | Passwort |
+|--------|--------|----------|
+| Sarah (Hauptnutzerin) | `sarah@demo.mycicle.app` | `demo2026` |
+| Tom (Partner) | `tom@demo.mycicle.app` | `partner2026` |
 
-## React Compiler
+Partner-Login über: `/partner-login`
+Pitch-Präsentation: `/pitch`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Lokales Setup
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Build:
+```bash
+npm run build
 ```
+
+## Tech Stack
+
+- **Vite + React 18 + TypeScript** – Build-Tooling und Framework
+- **Tailwind CSS v3** – Utility-first Styling
+- **react-router-dom v6** – Client-side Routing
+- **zustand** – State Management
+- **recharts** – Datenvisualisierung (Charts)
+- **lucide-react** – Icons
+- **framer-motion** – Animationen
+
+## Projektstruktur
+
+```
+src/
+  components/
+    ui/          # Basis-Komponenten (Button, Card, Badge, Chip, ...)
+    layout/      # Sidebar, Header, AppLayout
+    charts/      # Recharts-Komponenten (HRV, Schlaf, Temperatur, ...)
+    *.tsx        # Feature-Komponenten
+  pages/
+    Dashboard.tsx      # Hauptansicht mit Zyklusdaten
+    Wearables.tsx      # Wearable-Charts und Geräte
+    Insights.tsx       # KI-Insights und Empfehlungen
+    Partner.tsx        # Partner-Ansicht
+    PartnerLogin.tsx   # Login für Partner
+    Pitch.tsx          # Pitch-Präsentation (5 Folien)
+  data/mock/     # Beispieldaten (6 Monate Zyklus, 90 Tage Wearable)
+  store/         # Zustand (cycleStore, wearableStore, userStore, uiStore)
+  utils/         # cycleUtils (Sensiplan, Prognosen)
+  types/         # TypeScript-Interfaces
+  hooks/         # useDemoDelay
+```
+
+## Phasenübersicht
+
+| Phase | Feature |
+|-------|---------|
+| 0 | Vite + Tailwind + Dependencies Setup |
+| 1 | Design System (Button, Card, Badge, Sidebar, Header) |
+| 2 | Mock-Daten (6 Monate Zyklus, 90 Tage Wearable) + Stores |
+| 3 | Dashboard (Temperaturkurve, Kalender, FertileWindow, History) |
+| 4 | Wearables (HRV-Chart, Schlaf-Chart, ActivityRing, Korrelationen) |
+| 5 | KI-Insights (Feed, Anomalie-Banner, HealthScore, Empfehlungen) |
+| 6 | Partner-Ansicht (Login, Ampel, Bildungsinhalt, FamilyPlanning) |
+| 7 | Polish (DemoModeBanner, OnboardingTour, PageTransition, Pitch) |
