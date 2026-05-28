@@ -5,10 +5,10 @@ import { useUIStore } from '../store/uiStore';
 
 const SLIDES = [
   {
-    icon: <Heart size={32} className="text-rose-500" />,
+    icon: <Heart size={32} className="text-[#6F7CFF]" />,
     title: 'Willkommen bei mycicle',
     description: 'Deine KI-gestützte App für Zyklusmonitoring mit Wearable-Integration. Verstehe deinen Körper besser – Zyklus für Zyklus.',
-    bg: 'bg-rose-50',
+    bg: 'bg-[#EEF0FF]',
   },
   {
     icon: <div className="text-5xl">🌡️</div>,
@@ -87,7 +87,7 @@ export function OnboardingTour() {
                   key={i}
                   onClick={() => setStep(i)}
                   className={`rounded-full transition-all duration-200 ${
-                    i === step ? 'w-4 h-2 bg-rose-600' : 'w-2 h-2 bg-gray-200 hover:bg-gray-300'
+                    i === step ? 'w-4 h-2 bg-[#6F7CFF]' : 'w-2 h-2 bg-gray-200 hover:bg-gray-300'
                   }`}
                 />
               ))}
@@ -113,7 +113,7 @@ export function OnboardingTour() {
                 )}
                 <button
                   onClick={() => isLast ? setShowTour(false) : setStep(step + 1)}
-                  className="flex-1 flex items-center justify-center gap-1 py-2 rounded-xl bg-rose-600 text-white text-sm font-semibold hover:bg-rose-700 transition-colors"
+                  className="flex-1 flex items-center justify-center gap-1 py-2 rounded-xl bg-[#6F7CFF] text-white text-sm font-semibold hover:bg-[#5A68E8] transition-colors"
                 >
                   {isLast ? 'Los geht\'s!' : 'Weiter'}
                   {!isLast && <ChevronRight size={16} />}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -30,5 +30,23 @@
   }
   .scrollbar-none::-webkit-scrollbar {
     display: none;
+  }
+  .bg-calm-gradient {
+    background: linear-gradient(135deg, #B391C8 0%, #6F7CFF 47%, #7CC8B5 100%);
+  }
+  .bg-calm-gradient-soft {
+    background: linear-gradient(135deg, #B391C8 0%, #6F7CFF 40%, #7CC8B5 73%, #E9DCC6 100%);
+  }
+  .text-calm-gradient {
+    background: linear-gradient(135deg, #B391C8 0%, #6F7CFF 47%, #7CC8B5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .shadow-calm-sm {
+    box-shadow: 0 4px 12px rgba(111, 124, 255, 0.08);
+  }
+  .shadow-calm-md {
+    box-shadow: 0 8px 24px rgba(111, 124, 255, 0.12);
   }
 }

@@ -4,7 +4,7 @@ interface CycleProgressBarProps {
 }
 
 const PHASES = [
-  { label: 'Menstruation', days: 5, color: 'bg-rose-300', textColor: 'text-rose-700' },
+  { label: 'Menstruation', days: 5, color: 'bg-rose-300', textColor: 'text-[#6F7CFF]' },
   { label: 'Follikel', days: 8, color: 'bg-purple-200', textColor: 'text-purple-700' },
   { label: 'Ovulation', days: 3, color: 'bg-amber-300', textColor: 'text-amber-700' },
   { label: 'Luteal', days: 13, color: 'bg-teal-200', textColor: 'text-teal-700' },

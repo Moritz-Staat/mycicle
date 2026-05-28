@@ -26,12 +26,12 @@ function getInitials(name: string): string {
 
 function getColor(name: string): string {
   const colors = [
-    'bg-rose-400',
-    'bg-purple-400',
-    'bg-teal-400',
+    'bg-[#6F7CFF]',
+    'bg-[#B391C8]',
+    'bg-[#7CC8B5]',
     'bg-amber-400',
-    'bg-blue-400',
-    'bg-pink-400',
+    'bg-[#9BA4FF]',
+    'bg-[#D4B8E8]',
   ];
   const index = name.charCodeAt(0) % colors.length;
   return colors[index];

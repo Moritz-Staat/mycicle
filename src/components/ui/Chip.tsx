@@ -21,8 +21,8 @@ export function Chip({ children, active = false, onClick, onRemove, className = 
         transition-all duration-200 cursor-pointer border
         disabled:opacity-50 disabled:cursor-not-allowed
         ${active
-          ? 'bg-rose-600 text-white border-rose-600'
-          : 'bg-white text-gray-600 border-gray-200 hover:border-rose-300 hover:text-rose-600'
+          ? 'bg-[#6F7CFF] text-white border-[#6F7CFF]'
+          : 'bg-white text-gray-600 border-gray-200 hover:border-[#B3B9FF] hover:text-[#6F7CFF]'
         }
         ${className}
       `}

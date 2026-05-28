@@ -79,7 +79,7 @@ export default function Dashboard() {
           </div>
           <button
             onClick={() => setSelectedDay(today)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-rose-200 dark:border-rose-800 text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 text-sm font-medium transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#C5CAFF] dark:border-[#4A55CC] text-[#6F7CFF] hover:bg-[#EEF0FF] dark:hover:bg-[#6F7CFF]/20 text-sm font-medium transition-colors"
           >
             <Calendar size={16} />
             Tageseintrag
@@ -95,7 +95,7 @@ export default function Dashboard() {
           value={today?.dayOfCycle ?? '–'}
           unit={`/ ${stats.avgLength}`}
           trend="neutral"
-          iconBg="bg-rose-100 text-rose-600"
+          iconBg="bg-[#EEF0FF] text-[#6F7CFF]"
           sparklineData={[1, 3, 5, 8, 10, 12, 14]}
         />
         <StatCard

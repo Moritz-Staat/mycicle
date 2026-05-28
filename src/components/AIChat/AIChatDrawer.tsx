@@ -60,11 +60,11 @@ export function AIChatDrawer() {
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-4 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center">
-                  <Sparkles size={16} className="text-rose-600" />
+                <div className="w-8 h-8 rounded-full bg-[#EEF0FF] flex items-center justify-center">
+                  <Sparkles size={16} className="text-[#6F7CFF]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">mycicle KI</p>
+                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">mycycle KI</p>
                   <p className="text-xs text-green-500">Online</p>
                 </div>
               </div>
@@ -80,8 +80,8 @@ export function AIChatDrawer() {
             <div className="flex-1 overflow-y-auto px-4 py-4">
               {chatHistory.length === 0 && (
                 <div className="text-center py-8">
-                  <div className="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center mx-auto mb-3">
-                    <Sparkles size={22} className="text-rose-600" />
+                  <div className="w-12 h-12 rounded-full bg-[#EEF0FF] flex items-center justify-center mx-auto mb-3">
+                    <Sparkles size={22} className="text-[#6F7CFF]" />
                   </div>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Hallo Sarah!</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Ich bin deine KI-Assistentin. Frag mich alles über deinen Zyklus.</p>
@@ -113,12 +113,12 @@ export function AIChatDrawer() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Frag mich etwas..."
-                  className="flex-1 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:border-rose-400 transition-colors"
+                  className="flex-1 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:border-[#6F7CFF] transition-colors"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim()}
-                  className="p-2 rounded-lg bg-rose-600 text-white hover:bg-rose-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  className="p-2 rounded-lg bg-[#6F7CFF] text-white hover:bg-[#5A68E8] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
                   <Send size={16} />
                 </button>

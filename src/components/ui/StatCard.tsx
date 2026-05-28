@@ -22,7 +22,7 @@ export function StatCard({
   trend,
   trendValue,
   sparklineData,
-  iconBg = 'bg-rose-100 text-rose-600',
+  iconBg = 'bg-[#EEF0FF] text-[#6F7CFF]',
   className = '',
 }: StatCardProps) {
   const trendIcon = trend === 'up'
@@ -50,7 +50,7 @@ export function StatCard({
                 <Line
                   type="monotone"
                   dataKey="v"
-                  stroke="#E11D48"
+                  stroke="#6F7CFF"
                   strokeWidth={1.5}
                   dot={false}
                 />

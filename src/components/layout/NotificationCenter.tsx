@@ -46,7 +46,7 @@ export function NotificationCenter() {
             <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">Benachrichtigungen</p>
             <button
               onClick={markAllRead}
-              className="flex items-center gap-1.5 text-xs text-rose-600 hover:text-rose-700 font-medium"
+              className="flex items-center gap-1.5 text-xs text-[#6F7CFF] hover:text-[#6F7CFF] font-medium"
             >
               <CheckCheck size={14} />
               Alle gelesen
@@ -62,7 +62,7 @@ export function NotificationCenter() {
                   key={n.id}
                   onClick={() => markRead(n.id)}
                   className={`flex gap-3 px-4 py-3 border-b border-gray-50 dark:border-gray-800 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${
-                    !n.read ? 'border-l-2 border-l-rose-500 bg-rose-50 dark:bg-rose-950/20' : ''
+                    !n.read ? 'border-l-2 border-l-rose-500 bg-[#EEF0FF] dark:bg-rose-950/20' : ''
                   }`}
                 >
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${n.iconBg}`}>
@@ -79,14 +79,14 @@ export function NotificationCenter() {
                     {n.action && (
                       <button
                         onClick={(e) => { e.stopPropagation(); navigate(n.action!.route); setNotifOpen(false); }}
-                        className="mt-1 text-xs text-rose-600 font-medium hover:underline"
+                        className="mt-1 text-xs text-[#6F7CFF] font-medium hover:underline"
                       >
                         {n.action.label} →
                       </button>
                     )}
                   </div>
                   {!n.read && (
-                    <div className="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0 mt-1.5" />
+                    <div className="w-2 h-2 rounded-full bg-[#6F7CFF] flex-shrink-0 mt-1.5" />
                   )}
                 </div>
               );

@@ -32,7 +32,7 @@ export default function Partner() {
         <p className="text-gray-500 text-sm">Bitte melde dich als Partner an.</p>
         <button
           onClick={() => navigate('/partner-login')}
-          className="px-4 py-2 bg-rose-600 text-white rounded-lg text-sm font-medium hover:bg-rose-700 transition-colors"
+          className="px-4 py-2 bg-[#6F7CFF] text-white rounded-lg text-sm font-medium hover:bg-[#5A68E8] transition-colors"
         >
           Zur Anmeldung
         </button>

@@ -94,7 +94,7 @@ export function TempOverlayChart({ wearableData, cycleData }: TempOverlayChartPr
             type="monotone"
             dataKey="temp"
             name="Temperatur (°C)"
-            stroke="#E11D48"
+            stroke="#6F7CFF"
             strokeWidth={2}
             dot={{ r: 2, fill: '#E11D48', strokeWidth: 0 }}
             connectNulls={false}

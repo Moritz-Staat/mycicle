@@ -81,7 +81,7 @@ export function DayEntrySlideOver({ day, onClose }: DayEntrySlideOverProps) {
               {/* Temperature */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  <Thermometer size={14} className="inline mr-1 text-rose-500" />
+                  <Thermometer size={14} className="inline mr-1 text-[#6F7CFF]" />
                   Basaltemperatur (°C)
                 </label>
                 <input
@@ -141,7 +141,7 @@ export function DayEntrySlideOver({ day, onClose }: DayEntrySlideOverProps) {
                       key={i}
                       onClick={() => setMood(i + 1)}
                       className={`text-2xl p-2 rounded-lg transition-all duration-150 ${
-                        mood === i + 1 ? 'bg-rose-100 scale-110' : 'hover:bg-gray-100'
+                        mood === i + 1 ? 'bg-[#EEF0FF] scale-110' : 'hover:bg-gray-100'
                       }`}
                     >
                       {emoji}

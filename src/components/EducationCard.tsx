@@ -17,7 +17,7 @@ const SLIDES: EducationSlide[] = [
     title: 'Was passiert gerade in Sarahs Körper?',
     content: 'Die Gebärmutterschleimhaut wird abgebaut. Progesteron und Östrogen sind auf dem tiefsten Stand. Viele Frauen empfinden Schmerzen, Müdigkeit und möchten sich zurückziehen.',
     tip: 'Tipp: Wärme, kein Druck, gemeinsames Netflix schauen – mehr braucht es oft nicht.',
-    color: 'bg-rose-50 border-rose-200',
+    color: 'bg-[#EEF0FF] border-[#C5CAFF]',
   },
   {
     phase: 'Follikelphase',

@@ -44,10 +44,10 @@ export default function PartnerLogin() {
       <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-rose-600 flex items-center justify-center mb-3">
+          <div className="w-12 h-12 rounded-2xl bg-[#6F7CFF] flex items-center justify-center mb-3">
             <Heart size={24} className="text-white" fill="white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">mycicle</h1>
+          <h1 className="text-2xl font-bold text-gray-900">mycycle</h1>
           <p className="text-sm text-gray-500 mt-1 flex items-center gap-1.5">
             <Users size={14} />
             Partner-Zugang

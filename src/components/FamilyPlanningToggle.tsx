@@ -13,7 +13,7 @@ export function FamilyPlanningToggle() {
           onClick={() => setFamilyPlanningMode('contraception')}
           className={`flex items-center gap-2 px-3 py-3 rounded-xl border text-sm font-medium transition-all duration-200 ${
             !isConception
-              ? 'bg-rose-50 border-rose-300 text-rose-700'
+              ? 'bg-[#EEF0FF] border-[#B3B9FF] text-[#6F7CFF]'
               : 'bg-gray-50 border-gray-200 text-gray-500 hover:border-gray-300'
           }`}
         >

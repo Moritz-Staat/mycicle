@@ -22,7 +22,7 @@ export function RecommendationCard({ icon, title, description, difficulty, categ
   return (
     <div className={`bg-white rounded-xl border border-gray-100 shadow-sm p-4 transition-all duration-200 ${done ? 'opacity-60' : ''}`}>
       <div className="flex items-start gap-3">
-        <div className="p-2 bg-rose-50 rounded-lg text-rose-600 flex-shrink-0">
+        <div className="p-2 bg-[#EEF0FF] rounded-lg text-[#6F7CFF] flex-shrink-0">
           {icon}
         </div>
         <div className="flex-1 min-w-0">

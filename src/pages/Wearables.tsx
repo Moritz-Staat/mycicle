@@ -59,10 +59,10 @@ export default function Wearables() {
               <p className="text-2xl font-bold text-teal-700 mt-1">{today?.hrv}</p>
               <p className="text-xs text-teal-500">ms</p>
             </div>
-            <div className="bg-rose-50 dark:bg-rose-950/30 rounded-xl p-3 text-center">
-              <p className="text-xs text-rose-600 font-medium">Ruhepuls</p>
-              <p className="text-2xl font-bold text-rose-700 mt-1">{today?.restingHR}</p>
-              <p className="text-xs text-rose-500">bpm</p>
+            <div className="bg-[#EEF0FF] dark:bg-[#6F7CFF]/20 rounded-xl p-3 text-center">
+              <p className="text-xs text-[#6F7CFF] font-medium">Ruhepuls</p>
+              <p className="text-2xl font-bold text-[#6F7CFF] mt-1">{today?.restingHR}</p>
+              <p className="text-xs text-[#6F7CFF]">bpm</p>
             </div>
             <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-3 text-center">
               <p className="text-xs text-purple-600 font-medium">Schlaf-Score</p>

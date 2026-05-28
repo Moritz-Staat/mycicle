@@ -34,7 +34,7 @@ export function ChatMessage({ role, text, animate = false }: ChatMessageProps) {
   if (role === 'user') {
     return (
       <div className="flex justify-end mb-3">
-        <div className="max-w-[80%] px-4 py-2.5 bg-rose-600 text-white rounded-l-2xl rounded-tr-2xl text-sm leading-relaxed">
+        <div className="max-w-[80%] px-4 py-2.5 bg-[#6F7CFF] text-white rounded-l-2xl rounded-tr-2xl text-sm leading-relaxed">
           {text}
         </div>
       </div>
@@ -43,13 +43,13 @@ export function ChatMessage({ role, text, animate = false }: ChatMessageProps) {
 
   return (
     <div className="flex items-start gap-2 mb-3">
-      <div className="w-7 h-7 rounded-full bg-rose-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-        <Sparkles size={14} className="text-rose-600" />
+      <div className="w-7 h-7 rounded-full bg-[#EEF0FF] flex items-center justify-center flex-shrink-0 mt-0.5">
+        <Sparkles size={14} className="text-[#6F7CFF]" />
       </div>
       <div className="max-w-[85%] px-4 py-2.5 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-r-2xl rounded-tl-2xl text-sm leading-relaxed whitespace-pre-line">
         {isTyping && displayedText.length === 0 ? (
           <span className="flex items-center gap-1 text-gray-400">
-            mycicle schreibt
+            mycycle schreibt
             <span className="flex gap-0.5 ml-1">
               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />

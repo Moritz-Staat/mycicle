@@ -11,7 +11,7 @@ const pageTitles: Record<string, string> = {
 
 export function AppLayout() {
   const location = useLocation();
-  const title = pageTitles[location.pathname] || 'mycicle';
+  const title = pageTitles[location.pathname] || 'mycycle';
 
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">

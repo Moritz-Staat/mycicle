@@ -42,7 +42,7 @@ export function DoctorExportModal({ open, onClose }: DoctorExportModalProps) {
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(24);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('mycicle', margin, 20);
+    pdf.text('mycycle', margin, 20);
     pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
     pdf.text('KI-gestuetzte Zyklusgesundheit', margin, 30);
@@ -224,7 +224,7 @@ export function DoctorExportModal({ open, onClose }: DoctorExportModalProps) {
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800">
                 <div className="flex items-center gap-2">
-                  <FileText size={18} className="text-rose-600" />
+                  <FileText size={18} className="text-[#6F7CFF]" />
                   <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100">Arzt-Export erstellen</h2>
                 </div>
                 <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 transition-colors">
@@ -247,8 +247,8 @@ export function DoctorExportModal({ open, onClose }: DoctorExportModalProps) {
                         onClick={() => setPeriod(opt.id)}
                         className={`py-2 px-3 rounded-lg text-sm font-medium border transition-colors ${
                           period === opt.id
-                            ? 'bg-rose-600 text-white border-rose-600'
-                            : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-rose-300'
+                            ? 'bg-[#6F7CFF] text-white border-[#6F7CFF]'
+                            : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-[#B3B9FF]'
                         }`}
                       >
                         {opt.label}

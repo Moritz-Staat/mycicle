@@ -28,11 +28,11 @@ export function UpcomingCard({ currentDay, cycleLength, ovulationDay, periodStar
       bg: 'bg-purple-50',
     },
     {
-      icon: <Calendar size={16} className="text-rose-500" />,
+      icon: <Calendar size={16} className="text-[#6F7CFF]" />,
       label: 'Nächste Periode',
       days: daysToPeriod,
-      color: 'text-rose-600',
-      bg: 'bg-rose-50',
+      color: 'text-[#6F7CFF]',
+      bg: 'bg-[#EEF0FF]',
     },
   ].filter((e) => e.days >= 0);
 

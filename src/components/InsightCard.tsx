@@ -42,7 +42,7 @@ export function InsightCard({ insight }: InsightCardProps) {
           <div className="flex items-center gap-1 flex-shrink-0">
             <button
               onClick={() => setPinned(!pinned)}
-              className={`p-1.5 rounded-lg transition-colors ${pinned ? 'text-rose-500 bg-rose-50' : 'text-gray-300 hover:text-gray-500 hover:bg-gray-50'}`}
+              className={`p-1.5 rounded-lg transition-colors ${pinned ? 'text-[#6F7CFF] bg-[#EEF0FF]' : 'text-gray-300 hover:text-gray-500 hover:bg-gray-50'}`}
               title={pinned ? 'Entpinnen' : 'Anpinnen'}
             >
               <Pin size={14} fill={pinned ? 'currentColor' : 'none'} />
@@ -72,7 +72,7 @@ export function InsightCard({ insight }: InsightCardProps) {
         {!expanded && (
           <button
             onClick={() => setExpanded(true)}
-            className="mt-1 text-xs text-rose-500 hover:text-rose-700 font-medium transition-colors"
+            className="mt-1 text-xs text-[#6F7CFF] hover:text-[#6F7CFF] font-medium transition-colors"
           >
             Mehr anzeigen
           </button>

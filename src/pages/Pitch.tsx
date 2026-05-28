@@ -22,7 +22,7 @@ const SLIDES = [
   {
     id: 'solution',
     label: '02 · Lösung',
-    badge: 'bg-rose-100 text-rose-700',
+    badge: 'bg-[#EEF0FF] text-[#6F7CFF]',
     headline: 'mycicle – KI + Wearables\n + Zyklus in einem',
     subline: 'Wir korrelieren Oura/Apple Watch Daten mit Zyklusdaten und geben Frauen zum ersten Mal ein vollständiges Bild ihrer Gesundheit.',
     bullets: [
@@ -32,7 +32,7 @@ const SLIDES = [
       '👫 Partner-Ansicht mit Bildungsinhalt',
     ],
     bg: 'from-rose-50 to-pink-100',
-    accent: 'text-rose-600',
+    accent: 'text-[#6F7CFF]',
   },
   {
     id: 'demo',
@@ -112,10 +112,10 @@ export default function Pitch() {
       {/* Nav bar */}
       <div className="flex items-center justify-between px-8 py-5">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center">
+          <div className="w-7 h-7 rounded-lg bg-[#6F7CFF] flex items-center justify-center">
             <Heart size={14} className="text-white" fill="white" />
           </div>
-          <span className="text-base font-bold text-gray-900">mycicle</span>
+          <span className="text-base font-bold text-gray-900">mycycle</span>
         </div>
         <div className="flex items-center gap-3">
           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${slide.badge}`}>
@@ -174,7 +174,7 @@ export default function Pitch() {
               <div className="flex flex-wrap gap-3 mt-4">
                 <button
                   onClick={() => navigate('/')}
-                  className="px-6 py-3 bg-rose-600 text-white rounded-xl font-semibold hover:bg-rose-700 transition-colors shadow-md"
+                  className="px-6 py-3 bg-[#6F7CFF] text-white rounded-xl font-semibold hover:bg-[#5A68E8] transition-colors shadow-md"
                 >
                   Demo testen →
                 </button>

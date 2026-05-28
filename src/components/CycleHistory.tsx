@@ -62,7 +62,7 @@ export function CycleHistory({ cycleData }: CycleHistoryProps) {
         {recentCycles.map((cycle, i) => {
           const diff = cycle.length - avgLength;
           const TrendIcon = diff > 1 ? TrendingUp : diff < -1 ? TrendingDown : Minus;
-          const trendColor = diff > 1 ? 'text-amber-500' : diff < -1 ? 'text-rose-500' : 'text-gray-400';
+          const trendColor = diff > 1 ? 'text-amber-500' : diff < -1 ? 'text-[#6F7CFF]' : 'text-gray-400';
 
           return (
             <div key={cycle.startDate} className="flex items-center gap-4 py-2.5 border-b border-gray-50 last:border-0">

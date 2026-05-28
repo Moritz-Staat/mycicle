@@ -26,7 +26,7 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
     <div className="bg-white border border-gray-200 rounded-lg shadow-lg px-3 py-2 text-sm">
       <p className="font-semibold text-gray-700">Tag {label}</p>
       {payload[0] && (
-        <p className="text-rose-600">{payload[0].value.toFixed(2)} °C</p>
+        <p className="text-[#6F7CFF]">{payload[0].value.toFixed(2)} °C</p>
       )}
     </div>
   );
@@ -57,7 +57,7 @@ export function TemperatureChart({ cycleData }: TemperatureChartProps) {
         </div>
         <div className="flex items-center gap-4 text-xs">
           <div className="flex items-center gap-1.5">
-            <div className="w-4 h-0.5 bg-rose-500 rounded" />
+            <div className="w-4 h-0.5 bg-[#6F7CFF] rounded" />
             <span className="text-gray-600">Temperatur</span>
           </div>
           {deckline && (
@@ -106,7 +106,7 @@ export function TemperatureChart({ cycleData }: TemperatureChartProps) {
           <Line
             type="monotone"
             dataKey="temp"
-            stroke="#E11D48"
+            stroke="#6F7CFF"
             strokeWidth={2}
             dot={{ r: 3, fill: '#E11D48', strokeWidth: 0 }}
             activeDot={{ r: 5 }}
@@ -116,7 +116,7 @@ export function TemperatureChart({ cycleData }: TemperatureChartProps) {
       </ResponsiveContainer>
       {/* Phase labels */}
       <div className="flex mt-2 text-xs">
-        <div className="flex-[5] text-center text-rose-500 font-medium">Mens.</div>
+        <div className="flex-[5] text-center text-[#6F7CFF] font-medium">Mens.</div>
         <div className="flex-[8] text-center text-purple-500 font-medium">Follikel</div>
         <div className="flex-[3] text-center text-amber-500 font-medium">Ovulation</div>
         <div className="flex-[14] text-center text-teal-500 font-medium">Lutealphase</div>

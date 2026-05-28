@@ -60,9 +60,9 @@ export function ConfidenceBandChart() {
         </ComposedChart>
       </ResponsiveContainer>
 
-      <div className="mt-3 p-3 bg-rose-50 dark:bg-rose-950/20 rounded-lg">
+      <div className="mt-3 p-3 bg-[#EEF0FF] dark:bg-rose-950/20 rounded-lg">
         <p className="text-xs text-gray-600 dark:text-gray-400">
-          <span className="font-medium text-rose-600">Prognose:</span> Nächste Periode mit 80% Wahrscheinlichkeit am <span className="font-medium">1. Juni 2026</span> (±2 Tage). Basierend auf Ø 29.2 Tagen aus 6 Zyklen.
+          <span className="font-medium text-[#6F7CFF]">Prognose:</span> Nächste Periode mit 80% Wahrscheinlichkeit am <span className="font-medium">1. Juni 2026</span> (±2 Tage). Basierend auf Ø 29.2 Tagen aus 6 Zyklen.
         </p>
       </div>
     </div>

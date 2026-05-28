@@ -42,8 +42,8 @@ export function MultiCycleOverlayChart() {
               onClick={() => setMetric(m)}
               className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
                 metric === m
-                  ? 'bg-rose-600 text-white border-rose-600'
-                  : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:border-rose-300'
+                  ? 'bg-[#6F7CFF] text-white border-[#6F7CFF]'
+                  : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:border-[#B3B9FF]'
               }`}
             >
               {m === 'temperature' ? 'Temperatur' : 'HRV'}

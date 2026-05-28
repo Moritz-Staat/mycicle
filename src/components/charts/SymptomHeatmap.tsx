@@ -45,14 +45,14 @@ function getSymptomColor(count: number): string {
   if (count === 0) return 'bg-gray-100 dark:bg-gray-700';
   if (count === 1) return 'bg-rose-200';
   if (count === 2) return 'bg-rose-400';
-  return 'bg-rose-700';
+  return 'bg-[#5A68E8]';
 }
 
 function getHRVColor(hrv: number, baseline: number): string {
   if (hrv > baseline * 1.1) return 'bg-teal-300';
   if (hrv >= baseline * 0.9) return 'bg-gray-200 dark:bg-gray-600';
   if (hrv >= baseline * 0.8) return 'bg-rose-300';
-  return 'bg-rose-600';
+  return 'bg-[#6F7CFF]';
 }
 
 export function SymptomHeatmap() {
@@ -142,8 +142,8 @@ export function SymptomHeatmap() {
               onClick={() => setMode(m)}
               className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
                 mode === m
-                  ? 'bg-rose-600 text-white border-rose-600'
-                  : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:border-rose-300'
+                  ? 'bg-[#6F7CFF] text-white border-[#6F7CFF]'
+                  : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:border-[#B3B9FF]'
               }`}
             >
               {m === 'phase' ? 'Phase' : m === 'symptoms' ? 'Symptome' : 'HRV'}
@@ -230,7 +230,7 @@ export function SymptomHeatmap() {
         )}
         {mode === 'symptoms' && (
           <>
-            {[['0', 'bg-gray-100'], ['1', 'bg-rose-200'], ['2', 'bg-rose-400'], ['3+', 'bg-rose-700']].map(([label, color]) => (
+            {[['0', 'bg-gray-100'], ['1', 'bg-rose-200'], ['2', 'bg-rose-400'], ['3+', 'bg-[#5A68E8]']].map(([label, color]) => (
               <div key={label} className="flex items-center gap-1.5">
                 <div className={`w-3 h-3 rounded-sm ${color}`} />
                 <span className="text-xs text-gray-500 dark:text-gray-400">{label} Symptome</span>
@@ -243,7 +243,7 @@ export function SymptomHeatmap() {
             <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-teal-300" /><span className="text-xs text-gray-500 dark:text-gray-400">Hoch</span></div>
             <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-gray-200" /><span className="text-xs text-gray-500 dark:text-gray-400">Normal</span></div>
             <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-rose-300" /><span className="text-xs text-gray-500 dark:text-gray-400">Niedrig</span></div>
-            <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-rose-600" /><span className="text-xs text-gray-500 dark:text-gray-400">Sehr niedrig</span></div>
+            <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-[#6F7CFF]" /><span className="text-xs text-gray-500 dark:text-gray-400">Sehr niedrig</span></div>
           </>
         )}
       </div>
