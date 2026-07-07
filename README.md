@@ -46,8 +46,8 @@ Die App kennt drei Zustände:
 - Symptom-Heatmap (GitHub-Style Jahresübersicht)
 
 ### Ernährung (Neu in v5)
-- Phasenbasierte Mahlzeitenempfehlungen (Frühstück, Mittag, Abend)
-- Nährstoff-Tracking mit Bedarfs-Anzeige pro Zyklusphase
+- Phasenbasierte Ernährungsempfehlungen (Frühstück, Mittag, Abend)
+- Nährstoff-Übersicht mit Bedarfs-Anzeige pro Zyklusphase
 - Phasen-Ernährungsguide (4 Phasen mit Tipps und Lebensmittelquellen)
 - Dynamische Anpassung an aktuelle Zyklusphase
 
@@ -81,8 +81,8 @@ Die App kennt drei Zustände:
 - **Freemium/Pro-Modell**: Basis kostenlos, mycycle+ ab 4,99 €/Monat
 - **Pro-Badges** in Sidebar-Navigation bei Premium-Features
 - **Upgrade-Banner** auf Wearables, Insights, Partner und Ernährungs-Seiten
-- **Basis (kostenlos)**: Zyklustracking, manuelle Dateneingabe, Zyklushistorie, Community
-- **mycycle+**: Wearable-Integration, KI-Insights, Arzt-Export, Partner-Zugang, personalisierte Ernährungspläne
+- **Basis (kostenlos)**: Zyklustracking, manuelle Dateneingabe, Zyklushistorie, Ernährungsempfehlungen, Community
+- **mycycle+**: Wearable-Integration, KI-Insights, Arzt-Export, Partner-Zugang
 
 ### Profil & UX
 - Profilmenü (Name, E-Mail, Avatar-Upload)

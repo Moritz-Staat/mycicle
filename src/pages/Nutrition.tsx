@@ -6,7 +6,6 @@ import { EmptyState } from '../components/EmptyState';
 import { Button } from '../components/ui/Button';
 import { Card, CardBody } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
-import { ProUpgradeBanner } from '../components/ProUpgradeBanner';
 import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard } from '../components/ui/Skeleton';
 
@@ -327,17 +326,6 @@ export default function Nutrition() {
         </div>
       </div>
 
-      {/* Pro upsell */}
-      <ProUpgradeBanner
-        title="Personalisierte Ernährungspläne mit mycycle+"
-        description="Erhalte wöchentliche Meal-Prep-Pläne, Einkaufslisten und Rezepte – abgestimmt auf deine Zyklusphase und Nährstoffbedürfnisse."
-        features={[
-          'Wöchentliche Meal-Prep-Pläne',
-          'Automatische Einkaufslisten',
-          'Über 200 zyklusgerechte Rezepte',
-          'Nährstoff-Tracking mit Tageszielen',
-        ]}
-      />
     </div>
   );
 }
