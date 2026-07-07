@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Thermometer } from 'lucide-react';
+import { X, Thermometer, Pill, Check } from 'lucide-react';
 import type { CycleDay } from '../types';
 import { getPhaseLabel, formatDate } from '../utils/cycleUtils';
+import { useMedicationStore } from '../store/medicationStore';
 import { Chip } from './ui/Chip';
 import { Button } from './ui/Button';
 
@@ -150,6 +151,9 @@ export function DayEntrySlideOver({ day, onClose }: DayEntrySlideOverProps) {
                 </div>
               </div>
 
+              {/* Medications */}
+              <MedicationCheckSection date={day.date} />
+
               {/* Notes */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Notizen</label>
@@ -172,5 +176,59 @@ export function DayEntrySlideOver({ day, onClose }: DayEntrySlideOverProps) {
         </>
       )}
     </AnimatePresence>
+  );
+}
+
+/* ─── Medication check section inside day entry ─── */
+function MedicationCheckSection({ date }: { date: string }) {
+  const { medications, isTakenOnDate, logIntake } = useMedicationStore();
+  const activeMeds = medications.filter((m) => m.active);
+
+  if (activeMeds.length === 0) return null;
+
+  return (
+    <div>
+      <label className="flex items-center gap-1.5 text-sm font-medium text-gray-700 mb-2">
+        <Pill size={14} className="text-[#B391C8]" />
+        Medikamente
+      </label>
+      <div className="space-y-2">
+        {activeMeds.map((med) => {
+          const taken = isTakenOnDate(date, med.id);
+          return (
+            <button
+              key={med.id}
+              onClick={() => logIntake(date, med.id, !taken)}
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border transition-all text-left ${
+                taken
+                  ? 'bg-[#EBF8F4] border-[#7CC8B5] dark:bg-teal-950/30'
+                  : 'bg-white border-gray-200 hover:border-gray-300 dark:bg-gray-800 dark:border-gray-700'
+              }`}
+            >
+              <div
+                className={`w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 transition-colors ${
+                  taken
+                    ? 'bg-[#7CC8B5] text-white'
+                    : 'border-2 border-gray-300 dark:border-gray-600'
+                }`}
+              >
+                {taken && <Check size={12} />}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className={`text-sm font-medium ${taken ? 'text-gray-900 dark:text-gray-100' : 'text-gray-700 dark:text-gray-300'}`}>
+                  {med.name}
+                </p>
+                <p className="text-xs text-gray-400">
+                  {med.dosage}{med.time ? ` · ${med.time} Uhr` : ''}
+                </p>
+              </div>
+              {taken && (
+                <span className="text-[10px] font-medium text-[#7CC8B5]">Eingenommen</span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }

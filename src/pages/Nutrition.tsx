@@ -301,42 +301,7 @@ export default function Nutrition() {
       {/* ═══ ERNÄHRUNG TAB ═══ */}
       {activeTab === 'ernaehrung' && (
         <>
-          {/* Meals */}
-          <div>
-            <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-4">
-              Heute für dich
-            </h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              {meals.map((meal) => (
-                <Card key={meal.type} className="dark:bg-gray-900 dark:border-gray-800">
-                  <CardBody className="space-y-3">
-                    <div className="flex items-center gap-2 text-xs font-medium text-gray-400">
-                      {meal.icon}
-                      {meal.type}
-                    </div>
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">
-                      {meal.name}
-                    </h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {meal.nutrients.map((n) => (
-                        <span
-                          key={n}
-                          className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${phaseStyle.bg} ${phaseStyle.text}`}
-                        >
-                          {n}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="text-xs text-gray-400 pt-1 border-t border-gray-100 dark:border-gray-800">
-                      {meal.kcal} kcal · {meal.macros}
-                    </div>
-                  </CardBody>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Nutrients */}
+          {/* Nutrients (important — shown first) */}
           <div>
             <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-4">
               Wichtige Nährstoffe in dieser Phase
@@ -388,6 +353,42 @@ export default function Nutrition() {
               ))}
             </div>
           </div>
+
+          {/* Meals */}
+          <div>
+            <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              Mahlzeiten-Empfehlungen
+            </h3>
+            <div className="grid md:grid-cols-3 gap-4">
+              {meals.map((meal) => (
+                <Card key={meal.type} className="dark:bg-gray-900 dark:border-gray-800">
+                  <CardBody className="space-y-3">
+                    <div className="flex items-center gap-2 text-xs font-medium text-gray-400">
+                      {meal.icon}
+                      {meal.type}
+                    </div>
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">
+                      {meal.name}
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {meal.nutrients.map((n) => (
+                        <span
+                          key={n}
+                          className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${phaseStyle.bg} ${phaseStyle.text}`}
+                        >
+                          {n}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="text-xs text-gray-400 pt-1 border-t border-gray-100 dark:border-gray-800">
+                      {meal.kcal} kcal · {meal.macros}
+                    </div>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </div>
+
         </>
       )}
 

@@ -1,5 +1,6 @@
 import type { CycleDay } from '../types';
 import { getPhaseTailwindBg } from '../utils/cycleUtils';
+import { useMedicationStore } from '../store/medicationStore';
 
 interface CycleCalendarProps {
   cycleData: CycleDay[];
@@ -10,6 +11,7 @@ const TODAY = '2026-05-18';
 const WEEKDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
 export function CycleCalendar({ cycleData, onDayClick }: CycleCalendarProps) {
+  const { hasAnyIntakeOnDate } = useMedicationStore();
   const year = 2026;
   const month = 4; // May (0-indexed)
 
@@ -35,6 +37,7 @@ export function CycleCalendar({ cycleData, onDayClick }: CycleCalendarProps) {
           <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-purple-100 border border-purple-300 inline-block" />Follikel</span>
           <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-amber-200 border border-amber-400 inline-block" />Ovulation</span>
           <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-teal-100 border border-teal-300 inline-block" />Luteal</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#B391C8] inline-block" />Medi</span>
         </div>
       </div>
 
@@ -53,6 +56,7 @@ export function CycleCalendar({ cycleData, onDayClick }: CycleCalendarProps) {
           }
           const isToday = day.date === TODAY;
           const phaseClasses = getPhaseTailwindBg(day.phase);
+          const hasMeds = hasAnyIntakeOnDate(day.date);
 
           return (
             <button
@@ -67,6 +71,9 @@ export function CycleCalendar({ cycleData, onDayClick }: CycleCalendarProps) {
               `}
             >
               {new Date(day.date).getDate()}
+              {hasMeds && (
+                <span className="absolute top-0.5 right-0.5 w-1.5 h-1.5 rounded-full bg-[#B391C8]" />
+              )}
               {isToday && (
                 <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gray-800" />
               )}

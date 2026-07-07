@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { X, Camera, Play, LogOut, Check } from 'lucide-react';
+import { X, Camera, Play, LogOut, Check, Pill, Plus, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUserStore } from '../store/userStore';
+import { useMedicationStore } from '../store/medicationStore';
 import { Avatar } from './ui/Avatar';
 import { Button } from './ui/Button';
 
@@ -163,6 +164,9 @@ export function ProfileMenu({ open, onClose }: ProfileMenuProps) {
             )}
           </div>
 
+          {/* Medication settings */}
+          <MedicationSettings />
+
           {/* Actions */}
           <div className="border-t border-gray-100 dark:border-gray-800 px-5 py-3 space-y-1">
             {authState === 'authenticated' && (
@@ -194,5 +198,127 @@ export function ProfileMenu({ open, onClose }: ProfileMenuProps) {
         </motion.div>
       )}
     </AnimatePresence>
+  );
+}
+
+/* ─── Medication settings section ─── */
+function MedicationSettings() {
+  const { medications, addMedication, removeMedication, toggleMedication } =
+    useMedicationStore();
+  const [showAdd, setShowAdd] = useState(false);
+  const [newName, setNewName] = useState('');
+  const [newDosage, setNewDosage] = useState('');
+  const [newFreq, setNewFreq] = useState<'daily' | 'as-needed'>('daily');
+
+  const handleAdd = () => {
+    if (!newName.trim()) return;
+    addMedication({
+      name: newName.trim(),
+      dosage: newDosage.trim() || '–',
+      frequency: newFreq,
+      active: true,
+    });
+    setNewName('');
+    setNewDosage('');
+    setShowAdd(false);
+  };
+
+  return (
+    <div className="border-t border-gray-100 dark:border-gray-800 px-5 py-3">
+      <div className="flex items-center justify-between mb-2">
+        <span className="flex items-center gap-1.5 text-xs font-semibold text-calm-muted">
+          <Pill size={12} />
+          Medikamente
+        </span>
+        <button
+          onClick={() => setShowAdd(!showAdd)}
+          className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-[#6F7CFF] transition-colors"
+        >
+          <Plus size={14} />
+        </button>
+      </div>
+
+      {medications.length === 0 && !showAdd && (
+        <p className="text-xs text-gray-400">Keine Medikamente eingerichtet</p>
+      )}
+
+      <div className="space-y-1">
+        {medications.map((med) => (
+          <div
+            key={med.id}
+            className="flex items-center gap-2 py-1.5 group"
+          >
+            <button
+              onClick={() => toggleMedication(med.id)}
+              className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 transition-colors ${
+                med.active
+                  ? 'bg-[#7CC8B5] text-white'
+                  : 'border border-gray-300 dark:border-gray-600'
+              }`}
+            >
+              {med.active && <Check size={10} />}
+            </button>
+            <div className="flex-1 min-w-0">
+              <p className={`text-xs truncate ${med.active ? 'text-calm-text dark:text-gray-200' : 'text-gray-400 line-through'}`}>
+                {med.name}
+              </p>
+              <p className="text-[10px] text-gray-400">
+                {med.dosage} · {med.frequency === 'daily' ? 'Täglich' : 'Bei Bedarf'}
+              </p>
+            </div>
+            <button
+              onClick={() => removeMedication(med.id)}
+              className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-50 text-gray-300 hover:text-red-500 transition-all"
+            >
+              <Trash2 size={12} />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {showAdd && (
+        <div className="mt-2 space-y-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          <input
+            type="text"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+            placeholder="Name (z.B. Pille, Eisen)"
+            className="w-full border border-gray-200 dark:border-gray-700 rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#6F7CFF] bg-white dark:bg-gray-900 text-calm-text dark:text-gray-100"
+          />
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={newDosage}
+              onChange={(e) => setNewDosage(e.target.value)}
+              placeholder="Dosis"
+              className="flex-1 border border-gray-200 dark:border-gray-700 rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#6F7CFF] bg-white dark:bg-gray-900 text-calm-text dark:text-gray-100"
+            />
+            <select
+              value={newFreq}
+              onChange={(e) => setNewFreq(e.target.value as 'daily' | 'as-needed')}
+              className="border border-gray-200 dark:border-gray-700 rounded px-2 py-1.5 text-xs bg-white dark:bg-gray-900 text-calm-text dark:text-gray-100"
+            >
+              <option value="daily">Täglich</option>
+              <option value="as-needed">Bei Bedarf</option>
+            </select>
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setShowAdd(false)}
+              className="flex-1 py-1.5 rounded text-xs text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              Abbrechen
+            </button>
+            <button
+              onClick={handleAdd}
+              disabled={!newName.trim()}
+              className="flex-1 py-1.5 rounded text-xs font-medium text-white bg-[#6F7CFF] hover:bg-[#5A68E8] disabled:opacity-40 transition-colors"
+            >
+              Hinzufügen
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

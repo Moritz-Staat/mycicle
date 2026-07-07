@@ -47,3 +47,12 @@ export interface UserProfile {
   partnerConnected: boolean;
   isPartner?: boolean;
 }
+
+export interface Medication {
+  id: string;
+  name: string;
+  dosage: string;
+  frequency: 'daily' | 'as-needed';
+  time?: string; // e.g. "08:00"
+  active: boolean;
+}
