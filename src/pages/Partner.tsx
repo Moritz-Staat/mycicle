@@ -62,7 +62,7 @@ export default function Partner() {
   };
 
   const handleCopyLink = () => {
-    navigator.clipboard?.writeText('https://mycicle.app/partner-invite/sarah-001');
+    navigator.clipboard?.writeText('https://mycycle.app/partner-invite/sarah-001');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -237,7 +237,7 @@ export default function Partner() {
                   Tom Müller
                 </p>
                 <p className="text-xs text-calm-muted">
-                  tom@demo.mycicle.app · Verbunden seit Jan. 2026
+                  tom@demo.mycycle.app · Verbunden seit Jan. 2026
                 </p>
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function Partner() {
           </p>
           <div className="flex gap-2">
             <div className="flex-1 bg-gray-50 dark:bg-gray-800 rounded-lg px-3 py-2 text-sm text-calm-muted font-mono truncate border border-gray-100 dark:border-gray-700">
-              mycicle.app/partner-invite/{firstName.toLowerCase()}-001
+              mycycle.app/partner-invite/{firstName.toLowerCase()}-001
             </div>
             <Button
               variant={copied ? 'ghost' : 'secondary'}

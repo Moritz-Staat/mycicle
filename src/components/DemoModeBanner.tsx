@@ -8,7 +8,7 @@ export function DemoModeBanner() {
 
   if (authState !== 'demo') return null;
 
-  const hasAccount = !!localStorage.getItem('mycicle-account');
+  const hasAccount = !!localStorage.getItem('mycycle-account');
 
   const handleAction = () => {
     if (hasAccount) {

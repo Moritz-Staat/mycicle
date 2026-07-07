@@ -39,7 +39,7 @@ export const useUserStore = create<UserState>()(
         set({ authState: 'demo', profile: sarahProfile }),
 
       switchToAccount: () => {
-        const stored = localStorage.getItem('mycicle-account');
+        const stored = localStorage.getItem('mycycle-account');
         if (stored) {
           const { profile } = JSON.parse(stored);
           set({ authState: 'authenticated', profile });
@@ -56,14 +56,14 @@ export const useUserStore = create<UserState>()(
           partnerConnected: false,
         };
         localStorage.setItem(
-          'mycicle-account',
+          'mycycle-account',
           JSON.stringify({ email, password, profile }),
         );
         set({ authState: 'authenticated', profile });
       },
 
       login: (email, password) => {
-        const stored = localStorage.getItem('mycicle-account');
+        const stored = localStorage.getItem('mycycle-account');
         if (stored) {
           const account = JSON.parse(stored);
           if (email === account.email && password === account.password) {
@@ -71,7 +71,7 @@ export const useUserStore = create<UserState>()(
             return true;
           }
         }
-        if (email === 'sarah@demo.mycicle.app' && password === 'demo2026') {
+        if (email === 'sarah@demo.mycycle.app' && password === 'demo2026') {
           set({ authState: 'demo', profile: sarahProfile });
           return true;
         }
@@ -89,11 +89,11 @@ export const useUserStore = create<UserState>()(
         const newProfile = { ...get().profile, ...updates };
         set({ profile: newProfile });
         // Persist to account storage so login restores updated profile
-        const stored = localStorage.getItem('mycicle-account');
+        const stored = localStorage.getItem('mycycle-account');
         if (stored) {
           const account = JSON.parse(stored);
           account.profile = newProfile;
-          localStorage.setItem('mycicle-account', JSON.stringify(account));
+          localStorage.setItem('mycycle-account', JSON.stringify(account));
         }
       },
 
@@ -101,7 +101,7 @@ export const useUserStore = create<UserState>()(
       setFamilyPlanningMode: (mode) => set({ familyPlanningMode: mode }),
     }),
     {
-      name: 'mycicle-auth',
+      name: 'mycycle-auth',
       partialize: (state) => ({
         authState: state.authState,
         profile: state.profile,

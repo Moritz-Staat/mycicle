@@ -27,7 +27,7 @@ export default function PartnerLogin() {
         setIsPartnerView(true);
         navigate('/partner');
       } else {
-        setError('E-Mail oder Passwort ungültig. Demo: tom@demo.mycicle.app / partner2026');
+        setError('E-Mail oder Passwort ungültig. Demo: tom@demo.mycycle.app / partner2026');
       }
       setLoading(false);
     }, 800);
@@ -61,7 +61,7 @@ export default function PartnerLogin() {
         >
           <span className="font-semibold">Demo-Zugangsdaten einfügen →</span>
           <br />
-          <span className="text-xs opacity-80">tom@demo.mycicle.app / partner2026</span>
+          <span className="text-xs opacity-80">tom@demo.mycycle.app / partner2026</span>
         </button>
 
         <form onSubmit={handleLogin} className="space-y-4">
@@ -71,7 +71,7 @@ export default function PartnerLogin() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="tom@demo.mycicle.app"
+              placeholder="tom@demo.mycycle.app"
               required
               className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition-shadow"
             />

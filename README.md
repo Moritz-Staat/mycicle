@@ -1,4 +1,4 @@
-# mycicle – KI-gestützte Zyklusgesundheits-App
+# mycycle – KI-gestützte Zyklusgesundheits-App
 
 Demo einer React/TypeScript App für ganzheitliches Zyklusmonitoring mit KI-Insights, Wearable-Integration, zyklusbasiertem Coaching und Community.
 
@@ -6,8 +6,8 @@ Demo einer React/TypeScript App für ganzheitliches Zyklusmonitoring mit KI-Insi
 
 | Nutzer | E-Mail | Passwort |
 |--------|--------|----------|
-| Sarah (Hauptnutzerin) | `sarah@demo.mycicle.app` | `demo2026` |
-| Tom (Partner) | `tom@demo.mycicle.app` | `partner2026` |
+| Sarah (Hauptnutzerin) | `sarah@demo.mycycle.app` | `demo2026` |
+| Tom (Partner) | `tom@demo.mycycle.app` | `partner2026` |
 
 ### Einstiegspunkte
 
@@ -101,6 +101,7 @@ Die App kennt drei Zustände:
 - KI-Chat-Interface mit 6 vorbereiteten Konversationen
 - Notification Center mit simulierten Push-Benachrichtigungen
 - Skeleton-Loading-States auf allen Seiten
+- Responsive Mobile-Layout mit optimierter Bottom-Navigation
 
 ## Lokales Setup
 
@@ -177,3 +178,4 @@ src/
 | v5.0.0 | Community-Forum, Ernährungs-Seite, Pro/Freemium-Monetarisierung |
 | v5.1.0 | Zyklusbasierte Trainingsempfehlungen, Ernährung & Sport kombiniert |
 | v5.2.0 | Medikamenten-/Pillentracker, KI-Chat-Blase Fix, Nährstoffe priorisiert |
+| v5.3.0 | Mobile-Layout-Fixes, Responsive Dropdowns, Namenskorrektur mycycle |

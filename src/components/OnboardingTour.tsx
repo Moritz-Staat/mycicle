@@ -7,7 +7,7 @@ import { useUserStore } from '../store/userStore';
 const SLIDES = [
   {
     icon: <Heart size={32} className="text-[#6F7CFF]" />,
-    title: 'Willkommen bei mycicle',
+    title: 'Willkommen bei mycycle',
     description: 'Deine KI-gestützte App für Zyklusmonitoring mit Wearable-Integration. Verstehe deinen Körper besser – Zyklus für Zyklus.',
     bg: 'bg-[#EEF0FF]',
   },

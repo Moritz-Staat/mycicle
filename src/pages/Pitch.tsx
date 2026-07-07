@@ -23,7 +23,7 @@ const SLIDES = [
     id: 'solution',
     label: '02 · Lösung',
     badge: 'bg-[#EEF0FF] text-[#6F7CFF]',
-    headline: 'mycicle – KI + Wearables\n + Zyklus in einem',
+    headline: 'mycycle – KI + Wearables\n + Zyklus in einem',
     subline: 'Wir korrelieren Oura/Apple Watch Daten mit Zyklusdaten und geben Frauen zum ersten Mal ein vollständiges Bild ihrer Gesundheit.',
     bullets: [
       '🌡️ Sensiplan-konforme Temperaturauswertung mit KI',
@@ -179,7 +179,7 @@ export default function Pitch() {
                   Demo testen →
                 </button>
                 <a
-                  href="mailto:hello@mycicle.app"
+                  href="mailto:hello@mycycle.app"
                   className="px-6 py-3 bg-white/80 text-gray-700 rounded-xl font-semibold hover:bg-white transition-colors shadow-sm"
                 >
                   Kontakt aufnehmen

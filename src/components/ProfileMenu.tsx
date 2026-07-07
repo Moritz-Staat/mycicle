@@ -72,7 +72,7 @@ export function ProfileMenu({ open, onClose }: ProfileMenuProps) {
     onClose();
   };
 
-  const hasAccount = !!localStorage.getItem('mycicle-account');
+  const hasAccount = !!localStorage.getItem('mycycle-account');
   const canEdit = authState === 'authenticated';
   const hasChanges = name !== profile.name || email !== profile.email;
 
