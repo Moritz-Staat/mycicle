@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronLeft, Heart, Activity, Sparkles, Users } from 'lucide-react';
 import { useUIStore } from '../store/uiStore';
+import { useUserStore } from '../store/userStore';
 
 const SLIDES = [
   {
@@ -38,9 +39,10 @@ const SLIDES = [
 
 export function OnboardingTour() {
   const { showTour, setShowTour } = useUIStore();
+  const authState = useUserStore((s) => s.authState);
   const [step, setStep] = useState(0);
 
-  if (!showTour) return null;
+  if (!showTour || authState === 'guest') return null;
 
   const slide = SLIDES[step];
   const isLast = step === SLIDES.length - 1;
