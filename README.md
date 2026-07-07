@@ -1,6 +1,6 @@
 # mycicle – KI-gestützte Zyklusgesundheits-App
 
-Demo einer React/TypeScript App für Zyklusmonitoring mit KI-Insights und Wearable-Integration.
+Demo einer React/TypeScript App für ganzheitliches Zyklusmonitoring mit KI-Insights, Wearable-Integration, zyklusbasiertem Coaching und Community.
 
 ## Demo-Zugangsdaten
 
@@ -16,9 +16,9 @@ Demo einer React/TypeScript App für Zyklusmonitoring mit KI-Insights und Wearab
 | `/welcome` | Landing Page (Gast-Ansicht) |
 | `/login` | Login-Formular |
 | `/signup` | 4-stufige Registrierung mit DSGVO-Konsent |
-| `/partner-login` | Partner-Login (Tom) |
 | `/nutrition` | Zyklusbasierte Ernährung & Training |
 | `/community` | Community-Forum |
+| `/partner-login` | Partner-Login (Tom) |
 | `/pitch` | Pitch-Präsentation (5 Folien) |
 
 ## Auth-System
@@ -40,18 +40,25 @@ Die App kennt drei Zustände:
 
 ### Zyklustracking (Dashboard)
 - Basaltemperaturkurve mit Sensiplan-Auswertung
-- Zykluskalender mit Tageseintrag-Slideover
+- Zykluskalender mit Tageseintrag-Slideover und Medikamenten-Indikator
 - Fruchtbarkeitsfenster-Prognose mit Konfidenzband
 - Zyklusfortschritt und -historie
 - Symptom-Heatmap (GitHub-Style Jahresübersicht)
 
-### Ernährung & Training (Neu in v5)
+### Ernährung & Training
 - Tab-Ansicht: Ernährung und Training auf einer Seite
-- **Ernährung**: Phasenbasierte Mahlzeitenempfehlungen, Nährstoff-Übersicht mit Bedarfsanzeige
+- **Ernährung**: Wichtige Nährstoffe pro Phase (oben), Mahlzeitenempfehlungen (unten)
 - **Training**: Zyklusbasierte Workout-Empfehlungen mit Intensität, Dauer und Benefits
-- Phasen-Hinweise: Sportmedizinische Tipps und Warnungen pro Zyklusphase
+- Sportmedizinische Hinweise und Warnungen pro Zyklusphase
 - Phasen-Guide mit Ernährungs- und Trainingstipps für alle 4 Phasen
 - Dynamische Anpassung an aktuelle Zyklusphase
+
+### Medikamenten-/Pillentracker
+- Medikamente im Profil-Menü verwalten (hinzufügen, entfernen, aktivieren/deaktivieren)
+- Tägliche Einnahme im Tageseintrag abhaken
+- Kalender zeigt lila Punkt bei eingenommenen Medikamenten
+- Push-Notifications bei vergessener Einnahme (Pille, Eisenpräparat etc.)
+- Demo-Daten: Mikropille, Eisenpräparat, Magnesium
 
 ### Wearable-Integration (mycycle+)
 - Verbundene Geräte (Oura Ring, Apple Watch, Garmin)
@@ -67,7 +74,7 @@ Die App kennt drei Zustände:
 - Tägliche Empfehlungen (Schlaf, Bewegung, Ernährung)
 - PDF-Arzt-Export im Calm Medical Corporate Design (4 Seiten)
 
-### Community (Neu in v5)
+### Community
 - Forum mit Mock-Posts zu Zyklusgesundheitsthemen
 - 6 Kategorien: Zykluswissen, Kinderwunsch, Verhütung, Ernährung & Fitness, Erfahrungen
 - Trending-Themen-Widget und Community-Regeln
@@ -79,15 +86,15 @@ Die App kennt drei Zustände:
 - **Partner-Login** (Tom): Reduzierte Ansicht mit Status, Fruchtbarkeitsampel, Bildung
 - **Familienplanung**: Kinderwunsch / Verhütung-Toggle beeinflusst Ampelfarben
 
-### Monetarisierung (Neu in v5)
-- **Freemium/Pro-Modell**: Basis kostenlos, mycycle+ ab 4,99 €/Monat
+### Monetarisierung
+- **Freemium/Pro-Modell**: Basis kostenlos, mycycle+ ab 4,99 €/Monat (44,99 €/Jahr)
 - **Pro-Badges** in Sidebar-Navigation bei Premium-Features
-- **Upgrade-Banner** auf Wearables, Insights, Partner und Ernährungs-Seiten
-- **Basis (kostenlos)**: Zyklustracking, manuelle Dateneingabe, Zyklushistorie, Ernährungsempfehlungen, Community
+- **Upgrade-Banner** auf Wearables, Insights und Partner-Seiten
+- **Basis (kostenlos)**: Zyklustracking, Ernährung & Training, Medikamenten-Tracker, Community
 - **mycycle+**: Wearable-Integration, KI-Insights, Arzt-Export, Partner-Zugang
 
 ### Profil & UX
-- Profilmenü (Name, E-Mail, Avatar-Upload)
+- Profilmenü (Name, E-Mail, Avatar-Upload, Medikamenten-Verwaltung)
 - Dark Mode (System-Präferenz + Toggle)
 - OnboardingTour für neue Nutzer
 - Demo-Modus-Banner mit Wechsel zum eigenen Account
@@ -123,7 +130,7 @@ npm run build
 | Token | Farbe | Verwendung |
 |-------|-------|-----------|
 | Periwinkle | `#6F7CFF` | Primärfarbe, Buttons, Links |
-| Purple | `#B391C8` | Akzent, Gradienten |
+| Purple | `#B391C8` | Akzent, Gradienten, Medikamenten-Indikator |
 | Teal | `#7CC8B5` | Erfolg, Fruchtbarkeit, Wearable |
 | Warm | `#E9DCC6` | Hintergrund-Akzente |
 | Text | `#1A1625` | Haupttext |
@@ -138,7 +145,7 @@ src/
     ui/          # Basis-Komponenten (Button, Card, Badge, Avatar, Skeleton, ...)
     layout/      # Sidebar, Header, AppLayout
     charts/      # Recharts-Komponenten (HRV, Schlaf, Temperatur, ...)
-    *.tsx        # Feature-Komponenten (CurrentStatusCard, ProfileMenu, ...)
+    *.tsx        # Feature-Komponenten (CurrentStatusCard, ProfileMenu, ProBadge, ...)
   pages/
     Welcome.tsx        # Landing Page
     Login.tsx          # Login-Formular
@@ -152,9 +159,9 @@ src/
     PartnerLogin.tsx   # Login für Partner
     Pitch.tsx          # Pitch-Präsentation (5 Folien)
   data/mock/     # Beispieldaten (6 Monate Zyklus, 90 Tage Wearable)
-  store/         # Zustand (cycleStore, wearableStore, userStore, uiStore)
+  store/         # Zustand (cycleStore, wearableStore, userStore, uiStore, medicationStore)
   utils/         # cycleUtils (Sensiplan, Prognosen)
-  types/         # TypeScript-Interfaces
+  types/         # TypeScript-Interfaces (CycleDay, Medication, ...)
   hooks/         # useDemoDelay
 ```
 
@@ -169,3 +176,4 @@ src/
 | v4.1.0 | Profil-Menü, Empty States, Partner-Management-UI, Inline-Vorschau |
 | v5.0.0 | Community-Forum, Ernährungs-Seite, Pro/Freemium-Monetarisierung |
 | v5.1.0 | Zyklusbasierte Trainingsempfehlungen, Ernährung & Sport kombiniert |
+| v5.2.0 | Medikamenten-/Pillentracker, KI-Chat-Blase Fix, Nährstoffe priorisiert |
