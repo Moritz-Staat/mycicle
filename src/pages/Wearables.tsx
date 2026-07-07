@@ -11,6 +11,7 @@ import { ActivityRing } from '../components/ActivityRing';
 import { CorrelationCard } from '../components/CorrelationCard';
 import { EmptyState } from '../components/EmptyState';
 import { Button } from '../components/ui/Button';
+import { ProUpgradeBanner } from '../components/ProUpgradeBanner';
 import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard } from '../components/ui/Skeleton';
 
@@ -145,6 +146,12 @@ export default function Wearables() {
           />
         </div>
       </div>
+      {/* Pro upsell */}
+      <ProUpgradeBanner
+        compact
+        title="Wearable-Integration ist ein mycycle+ Feature"
+        description="Automatische Synchronisation mit Oura, Apple Watch und Garmin."
+      />
     </div>
   );
 }

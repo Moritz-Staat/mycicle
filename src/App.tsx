@@ -8,8 +8,10 @@ import { AIChatButton } from './components/AIChat/AIChatButton';
 import { AIChatDrawer } from './components/AIChat/AIChatDrawer';
 import { useUserStore } from './store/userStore';
 import Dashboard from './pages/Dashboard';
+import Nutrition from './pages/Nutrition';
 import Wearables from './pages/Wearables';
 import Insights from './pages/Insights';
+import Community from './pages/Community';
 import Partner from './pages/Partner';
 import PartnerLogin from './pages/PartnerLogin';
 import Pitch from './pages/Pitch';
@@ -55,8 +57,10 @@ function AnimatedRoutes() {
           {/* Main app routes */}
           <Route element={<AppLayout />}>
             <Route path="/" element={<PageTransition><Dashboard /></PageTransition>} />
+            <Route path="/nutrition" element={<PageTransition><Nutrition /></PageTransition>} />
             <Route path="/wearables" element={<PageTransition><Wearables /></PageTransition>} />
             <Route path="/insights" element={<PageTransition><Insights /></PageTransition>} />
+            <Route path="/community" element={<PageTransition><Community /></PageTransition>} />
             <Route path="/partner" element={<PageTransition><Partner /></PageTransition>} />
           </Route>
 

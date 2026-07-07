@@ -10,6 +10,7 @@ import { MonthlySummary } from '../components/MonthlySummary';
 import { DoctorExportModal } from '../components/DoctorExportModal';
 import { EmptyState } from '../components/EmptyState';
 import { Button } from '../components/ui/Button';
+import { ProUpgradeBanner } from '../components/ProUpgradeBanner';
 import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard } from '../components/ui/Skeleton';
 import { useUIStore } from '../store/uiStore';
@@ -141,6 +142,13 @@ export default function Insights() {
           </div>
         </div>
       </div>
+
+      {/* Pro upsell */}
+      <ProUpgradeBanner
+        compact
+        title="KI-Insights sind ein mycycle+ Feature"
+        description="Personalisierte Muster-Erkennung, Anomalie-Warnungen und Arzt-Export."
+      />
 
       <DoctorExportModal
         open={showDoctorExport}

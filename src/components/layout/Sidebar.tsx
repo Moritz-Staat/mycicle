@@ -1,19 +1,23 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Home, Activity, Sparkles, Users, LogOut } from 'lucide-react';
+import { Home, Activity, Sparkles, Users, LogOut, Apple, MessageCircle } from 'lucide-react';
 import { useUserStore } from '../../store/userStore';
 import { MycycleLogo } from '../MycycleLogo';
+import { ProBadge } from '../ProBadge';
 
 interface NavItem {
   label: string;
   icon: React.ReactNode;
   to: string;
+  pro?: boolean;
 }
 
 const navItems: NavItem[] = [
   { label: 'Dashboard', icon: <Home size={20} />, to: '/' },
-  { label: 'Wearables', icon: <Activity size={20} />, to: '/wearables' },
-  { label: 'Insights', icon: <Sparkles size={20} />, to: '/insights' },
-  { label: 'Partner', icon: <Users size={20} />, to: '/partner' },
+  { label: 'Ernährung', icon: <Apple size={20} />, to: '/nutrition' },
+  { label: 'Wearables', icon: <Activity size={20} />, to: '/wearables', pro: true },
+  { label: 'Insights', icon: <Sparkles size={20} />, to: '/insights', pro: true },
+  { label: 'Community', icon: <MessageCircle size={20} />, to: '/community' },
+  { label: 'Partner', icon: <Users size={20} />, to: '/partner', pro: true },
 ];
 
 export function Sidebar() {
@@ -51,7 +55,8 @@ export function Sidebar() {
             }
           >
             {item.icon}
-            {item.label}
+            <span className="flex-1">{item.label}</span>
+            {item.pro && <ProBadge size="sm" />}
           </NavLink>
         ))}
       </nav>
@@ -83,12 +88,14 @@ export function Sidebar() {
   );
 }
 
-// Bottom Navigation for mobile
+// Bottom Navigation for mobile — show max 5 items
+const mobileItems = navItems.filter((_, i) => [0, 1, 2, 4, 5].includes(i));
+
 export function BottomNav() {
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 z-50">
       <div className="flex justify-around py-2">
-        {navItems.map((item) => (
+        {mobileItems.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}

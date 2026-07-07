@@ -23,6 +23,7 @@ import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { Avatar } from '../components/ui/Avatar';
 import { EmptyState } from '../components/EmptyState';
+import { ProUpgradeBanner } from '../components/ProUpgradeBanner';
 import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard } from '../components/ui/Skeleton';
 
@@ -351,6 +352,13 @@ export default function Partner() {
           </div>
         </CardBody>
       </Card>
+
+      {/* ── Pro hint ── */}
+      <ProUpgradeBanner
+        compact
+        title="Partner-Zugang ist ein mycycle+ Feature"
+        description="Granulare Freigabe-Steuerung und Echtzeit-Synchronisation."
+      />
 
       {/* ── Inline preview ── */}
       {showPreview && (
