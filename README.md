@@ -17,7 +17,7 @@ Demo einer React/TypeScript App für Zyklusmonitoring mit KI-Insights und Wearab
 | `/login` | Login-Formular |
 | `/signup` | 4-stufige Registrierung mit DSGVO-Konsent |
 | `/partner-login` | Partner-Login (Tom) |
-| `/nutrition` | Zyklusbasierte Ernährung |
+| `/nutrition` | Zyklusbasierte Ernährung & Training |
 | `/community` | Community-Forum |
 | `/pitch` | Pitch-Präsentation (5 Folien) |
 
@@ -45,10 +45,12 @@ Die App kennt drei Zustände:
 - Zyklusfortschritt und -historie
 - Symptom-Heatmap (GitHub-Style Jahresübersicht)
 
-### Ernährung (Neu in v5)
-- Phasenbasierte Ernährungsempfehlungen (Frühstück, Mittag, Abend)
-- Nährstoff-Übersicht mit Bedarfs-Anzeige pro Zyklusphase
-- Phasen-Ernährungsguide (4 Phasen mit Tipps und Lebensmittelquellen)
+### Ernährung & Training (Neu in v5)
+- Tab-Ansicht: Ernährung und Training auf einer Seite
+- **Ernährung**: Phasenbasierte Mahlzeitenempfehlungen, Nährstoff-Übersicht mit Bedarfsanzeige
+- **Training**: Zyklusbasierte Workout-Empfehlungen mit Intensität, Dauer und Benefits
+- Phasen-Hinweise: Sportmedizinische Tipps und Warnungen pro Zyklusphase
+- Phasen-Guide mit Ernährungs- und Trainingstipps für alle 4 Phasen
 - Dynamische Anpassung an aktuelle Zyklusphase
 
 ### Wearable-Integration (mycycle+)
@@ -142,7 +144,7 @@ src/
     Login.tsx          # Login-Formular
     Signup.tsx         # 4-stufige Registrierung
     Dashboard.tsx      # Hauptansicht mit Zyklusdaten
-    Nutrition.tsx      # Phasenbasierte Ernährung
+    Nutrition.tsx      # Phasenbasierte Ernährung & Training
     Wearables.tsx      # Wearable-Charts und Geräte
     Insights.tsx       # KI-Insights und Empfehlungen
     Community.tsx      # Community-Forum
@@ -166,3 +168,4 @@ src/
 | v4.0.0 | Auth-Flow (Login/Signup/DSGVO), PDF-Redesign im Corporate Design |
 | v4.1.0 | Profil-Menü, Empty States, Partner-Management-UI, Inline-Vorschau |
 | v5.0.0 | Community-Forum, Ernährungs-Seite, Pro/Freemium-Monetarisierung |
+| v5.1.0 | Zyklusbasierte Trainingsempfehlungen, Ernährung & Sport kombiniert |

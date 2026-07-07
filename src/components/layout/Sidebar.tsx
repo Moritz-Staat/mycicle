@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Home, Activity, Sparkles, Users, LogOut, Apple, MessageCircle } from 'lucide-react';
+import { Home, Activity, Sparkles, Users, LogOut, Dumbbell, MessageCircle } from 'lucide-react';
 import { useUserStore } from '../../store/userStore';
 import { MycycleLogo } from '../MycycleLogo';
 import { ProBadge } from '../ProBadge';
@@ -13,7 +13,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Dashboard', icon: <Home size={20} />, to: '/' },
-  { label: 'Ernährung', icon: <Apple size={20} />, to: '/nutrition' },
+  { label: 'Ernährung & Sport', icon: <Dumbbell size={20} />, to: '/nutrition' },
   { label: 'Wearables', icon: <Activity size={20} />, to: '/wearables', pro: true },
   { label: 'Insights', icon: <Sparkles size={20} />, to: '/insights', pro: true },
   { label: 'Community', icon: <MessageCircle size={20} />, to: '/community' },

@@ -4,7 +4,7 @@ import { Header } from './Header';
 
 const pageTitles: Record<string, string> = {
   '/': 'Dashboard',
-  '/nutrition': 'Ernährung',
+  '/nutrition': 'Ernährung & Training',
   '/wearables': 'Wearables',
   '/insights': 'KI-Insights',
   '/community': 'Community',
