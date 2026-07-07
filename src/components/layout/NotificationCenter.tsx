@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCheck, Thermometer, Flower2, Activity, BarChart2, Users, Moon, Calendar, FileText } from 'lucide-react';
+import { CheckCheck, Thermometer, Flower2, Activity, BarChart2, Users, Moon, Calendar, FileText, Pill } from 'lucide-react';
 import { useUIStore } from '../../store/uiStore';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ const iconMap: Record<string, React.ElementType> = {
   Moon,
   Calendar,
   FileText,
+  Pill,
 };
 
 export function NotificationCenter() {
@@ -39,7 +40,7 @@ export function NotificationCenter() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -8, scale: 0.97 }}
           transition={{ duration: 0.15 }}
-          className="absolute right-0 top-full mt-2 w-[380px] bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 z-50 overflow-hidden"
+          className="fixed inset-x-4 top-[72px] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-2 sm:w-[380px] bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 z-50 overflow-hidden"
         >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800">

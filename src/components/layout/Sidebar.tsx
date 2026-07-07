@@ -88,26 +88,32 @@ export function Sidebar() {
   );
 }
 
-// Bottom Navigation for mobile — show max 5 items
-const mobileItems = navItems.filter((_, i) => [0, 1, 2, 4, 5].includes(i));
+// Bottom Navigation for mobile — 5 key items with short labels
+const mobileNav: Array<{ icon: React.ReactNode; label: string; to: string }> = [
+  { icon: <Home size={20} />, label: 'Home', to: '/' },
+  { icon: <Dumbbell size={20} />, label: 'Coaching', to: '/nutrition' },
+  { icon: <Sparkles size={20} />, label: 'Insights', to: '/insights' },
+  { icon: <MessageCircle size={20} />, label: 'Community', to: '/community' },
+  { icon: <Users size={20} />, label: 'Partner', to: '/partner' },
+];
 
 export function BottomNav() {
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 z-50">
-      <div className="flex justify-around py-2">
-        {mobileItems.map((item) => (
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 z-50 safe-area-bottom">
+      <div className="flex justify-around py-2 px-1">
+        {mobileNav.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
             end={item.to === '/'}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200 min-w-[60px] ${
+              `flex flex-col items-center gap-0.5 py-1.5 px-2 rounded-lg transition-all duration-200 min-w-0 ${
                 isActive ? 'text-[#6F7CFF]' : 'text-[#68627A] dark:text-gray-400'
               }`
             }
           >
             {item.icon}
-            <span className="text-xs font-medium">{item.label}</span>
+            <span className="text-[10px] font-medium leading-tight">{item.label}</span>
           </NavLink>
         ))}
       </div>
