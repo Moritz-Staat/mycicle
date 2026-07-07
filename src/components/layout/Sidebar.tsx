@@ -1,5 +1,7 @@
-import { NavLink } from 'react-router-dom';
-import { Home, Activity, Sparkles, Users } from 'lucide-react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Home, Activity, Sparkles, Users, LogOut } from 'lucide-react';
+import { useUserStore } from '../../store/userStore';
+import { MycycleLogo } from '../MycycleLogo';
 
 interface NavItem {
   label: string;
@@ -14,17 +16,15 @@ const navItems: NavItem[] = [
   { label: 'Partner', icon: <Users size={20} />, to: '/partner' },
 ];
 
-function MycycleLogo({ size = 28 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M143 38 C107 19 60 38 42 82 C23 129 49 184 99 201 C132 212 170 202 194 176" fill="none" stroke="white" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M82 104 C82 82 110 76 128 101 C146 76 174 82 174 104 C174 135 128 164 128 164 C128 164 82 135 82 104 Z" fill="none" stroke="white" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M111 135 L121 135 L126 121 L133 153 L140 135 L153 135" fill="none" stroke="white" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-
 export function Sidebar() {
+  const navigate = useNavigate();
+  const { authState, profile, logout } = useUserStore();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/welcome');
+  };
+
   return (
     <aside className="hidden md:flex flex-col w-60 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 min-h-screen sticky top-0">
       {/* Logo */}
@@ -56,12 +56,28 @@ export function Sidebar() {
         ))}
       </nav>
 
-      {/* Demo mode indicator */}
+      {/* Bottom section */}
       <div className="px-4 py-4 border-t border-gray-100 dark:border-gray-800">
-        <div className="rounded-lg px-3 py-2.5 text-xs" style={{ background: 'linear-gradient(135deg, rgba(179,145,200,0.12) 0%, rgba(111,124,255,0.10) 100%)' }}>
-          <p className="font-semibold" style={{ color: '#6F7CFF' }}>Demo-Modus</p>
-          <p className="mt-0.5" style={{ color: '#68627A' }}>Daten von Sarah M.</p>
-        </div>
+        {authState === 'demo' ? (
+          <div className="rounded-lg px-3 py-2.5 text-xs" style={{ background: 'linear-gradient(135deg, rgba(179,145,200,0.12) 0%, rgba(111,124,255,0.10) 100%)' }}>
+            <p className="font-semibold" style={{ color: '#6F7CFF' }}>Demo-Modus</p>
+            <p className="mt-0.5" style={{ color: '#68627A' }}>Daten von Sarah M.</p>
+          </div>
+        ) : (
+          <div className="space-y-2">
+            <div className="rounded-lg px-3 py-2.5 text-xs bg-gray-50 dark:bg-gray-800">
+              <p className="font-semibold text-calm-text dark:text-gray-200 truncate">{profile.name}</p>
+              <p className="mt-0.5 text-calm-muted truncate">{profile.email}</p>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-calm-muted hover:text-red-600 hover:bg-red-50 transition-colors"
+            >
+              <LogOut size={14} />
+              Abmelden
+            </button>
+          </div>
+        )}
       </div>
     </aside>
   );
