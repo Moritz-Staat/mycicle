@@ -3,15 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '../store/userStore';
 
 export function DemoModeBanner() {
-  const authState = useUserStore((s) => s.authState);
-  const logout = useUserStore((s) => s.logout);
+  const { authState, logout, switchToAccount } = useUserStore();
   const navigate = useNavigate();
 
   if (authState !== 'demo') return null;
 
-  const handleSignup = () => {
-    logout();
-    navigate('/signup');
+  const hasAccount = !!localStorage.getItem('mycicle-account');
+
+  const handleAction = () => {
+    if (hasAccount) {
+      switchToAccount();
+    } else {
+      logout();
+      navigate('/signup');
+    }
   };
 
   return (
@@ -26,10 +31,10 @@ export function DemoModeBanner() {
         </p>
       </div>
       <button
-        onClick={handleSignup}
+        onClick={handleAction}
         className="flex-shrink-0 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-semibold transition-colors whitespace-nowrap"
       >
-        Echten Account erstellen
+        {hasAccount ? 'Zurück zu meinem Account' : 'Echten Account erstellen'}
       </button>
     </div>
   );

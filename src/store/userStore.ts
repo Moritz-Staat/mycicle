@@ -12,6 +12,7 @@ interface UserState {
   familyPlanningMode: 'contraception' | 'conception';
 
   enterDemo: () => void;
+  switchToAccount: () => void;
   signup: (data: {
     name: string;
     email: string;
@@ -21,13 +22,14 @@ interface UserState {
   }) => void;
   login: (email: string, password: string) => boolean;
   logout: () => void;
+  updateProfile: (updates: Partial<UserProfile>) => void;
   setIsPartnerView: (v: boolean) => void;
   setFamilyPlanningMode: (mode: 'contraception' | 'conception') => void;
 }
 
 export const useUserStore = create<UserState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       authState: 'guest',
       profile: sarahProfile,
       isPartnerView: false,
@@ -35,6 +37,14 @@ export const useUserStore = create<UserState>()(
 
       enterDemo: () =>
         set({ authState: 'demo', profile: sarahProfile }),
+
+      switchToAccount: () => {
+        const stored = localStorage.getItem('mycicle-account');
+        if (stored) {
+          const { profile } = JSON.parse(stored);
+          set({ authState: 'authenticated', profile });
+        }
+      },
 
       signup: ({ name, email, password, cycleLength, periodLength }) => {
         const profile: UserProfile = {
@@ -53,7 +63,6 @@ export const useUserStore = create<UserState>()(
       },
 
       login: (email, password) => {
-        // Check stored signup credentials
         const stored = localStorage.getItem('mycicle-account');
         if (stored) {
           const account = JSON.parse(stored);
@@ -62,7 +71,6 @@ export const useUserStore = create<UserState>()(
             return true;
           }
         }
-        // Check demo credentials
         if (email === 'sarah@demo.mycicle.app' && password === 'demo2026') {
           set({ authState: 'demo', profile: sarahProfile });
           return true;
@@ -76,6 +84,18 @@ export const useUserStore = create<UserState>()(
           profile: sarahProfile,
           isPartnerView: false,
         }),
+
+      updateProfile: (updates) => {
+        const newProfile = { ...get().profile, ...updates };
+        set({ profile: newProfile });
+        // Persist to account storage so login restores updated profile
+        const stored = localStorage.getItem('mycicle-account');
+        if (stored) {
+          const account = JSON.parse(stored);
+          account.profile = newProfile;
+          localStorage.setItem('mycicle-account', JSON.stringify(account));
+        }
+      },
 
       setIsPartnerView: (v) => set({ isPartnerView: v }),
       setFamilyPlanningMode: (mode) => set({ familyPlanningMode: mode }),

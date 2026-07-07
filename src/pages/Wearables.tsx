@@ -1,5 +1,7 @@
+import { Activity } from 'lucide-react';
 import { useWearableStore } from '../store/wearableStore';
 import { useCycleStore } from '../store/cycleStore';
+import { useUserStore } from '../store/userStore';
 import { DeviceCard } from '../components/DeviceCard';
 import { HRVChart } from '../components/charts/HRVChart';
 import { SleepChart } from '../components/charts/SleepChart';
@@ -7,12 +9,15 @@ import { TempOverlayChart } from '../components/charts/TempOverlayChart';
 import { MultiCycleOverlayChart } from '../components/charts/MultiCycleOverlayChart';
 import { ActivityRing } from '../components/ActivityRing';
 import { CorrelationCard } from '../components/CorrelationCard';
+import { EmptyState } from '../components/EmptyState';
+import { Button } from '../components/ui/Button';
 import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard } from '../components/ui/Skeleton';
 
 export default function Wearables() {
   const { wearableHistory, devices } = useWearableStore();
   const { cycleHistory } = useCycleStore();
+  const { authState, enterDemo } = useUserStore();
   const loaded = useDemoDelay(700);
 
   const today = wearableHistory[wearableHistory.length - 1];
@@ -27,6 +32,21 @@ export default function Wearables() {
         <SkeletonCard className="h-72" />
         <SkeletonCard className="h-72" />
       </div>
+    );
+  }
+
+  if (authState === 'authenticated') {
+    return (
+      <EmptyState
+        icon={<Activity size={28} />}
+        title="Noch keine Wearable-Daten"
+        description="Verbinde deinen Oura Ring, deine Apple Watch oder dein Garmin, um HRV, Schlaf und Aktivität zu tracken."
+        action={
+          <Button variant="secondary" onClick={enterDemo}>
+            Demo-Daten ansehen
+          </Button>
+        }
+      />
     );
   }
 

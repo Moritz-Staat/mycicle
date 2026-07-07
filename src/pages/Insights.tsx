@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FileText, Moon, Dumbbell, Pill } from 'lucide-react';
+import { FileText, Moon, Dumbbell, Pill, Sparkles } from 'lucide-react';
+import { useUserStore } from '../store/userStore';
 import { insightsData } from '../data/mock/insightsData';
 import { AnomalyBanner } from '../components/AnomalyBanner';
 import { InsightFeed } from '../components/InsightFeed';
@@ -7,6 +8,7 @@ import { HealthScoreWidget } from '../components/charts/HealthScoreWidget';
 import { RecommendationCard } from '../components/RecommendationCard';
 import { MonthlySummary } from '../components/MonthlySummary';
 import { DoctorExportModal } from '../components/DoctorExportModal';
+import { EmptyState } from '../components/EmptyState';
 import { Button } from '../components/ui/Button';
 import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard } from '../components/ui/Skeleton';
@@ -24,7 +26,23 @@ const TABS: Array<{ id: Tab; label: string; count?: number }> = [
 export default function Insights() {
   const [activeTab, setActiveTab] = useState<Tab>('all');
   const { showDoctorExport, setShowDoctorExport } = useUIStore();
+  const { authState, enterDemo } = useUserStore();
   const loaded = useDemoDelay(600);
+
+  if (authState === 'authenticated') {
+    return (
+      <EmptyState
+        icon={<Sparkles size={28} />}
+        title="Noch keine KI-Insights"
+        description="Sobald genügend Zyklusdaten vorliegen, generiert die KI personalisierte Erkenntnisse und Empfehlungen."
+        action={
+          <Button variant="secondary" onClick={enterDemo}>
+            Demo-Insights ansehen
+          </Button>
+        }
+      />
+    );
+  }
 
   const alertInsights = insightsData.filter((i) => i.severity === 'alert');
 

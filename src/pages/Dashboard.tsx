@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Calendar, Clock, Activity, Zap } from 'lucide-react';
 import { useCycleStore } from '../store/cycleStore';
 import { useWearableStore } from '../store/wearableStore';
+import { useUserStore } from '../store/userStore';
 import {
   getCurrentCycleDay,
   calculateCycleStats,
@@ -22,10 +23,13 @@ import { useDemoDelay } from '../hooks/useDemoDelay';
 import { SkeletonCard, Skeleton } from '../components/ui/Skeleton';
 import { SymptomHeatmap } from '../components/charts/SymptomHeatmap';
 import { ConfidenceBandChart } from '../components/charts/ConfidenceBandChart';
+import { EmptyState } from '../components/EmptyState';
+import { Button } from '../components/ui/Button';
 
 export default function Dashboard() {
   const { cycleHistory } = useCycleStore();
   const { wearableHistory } = useWearableStore();
+  const { authState, enterDemo } = useUserStore();
   const [selectedDay, setSelectedDay] = useState<CycleDay | null>(null);
   const loaded = useDemoDelay(600);
 
@@ -60,6 +64,21 @@ export default function Dashboard() {
           <SkeletonCard className="h-72" />
         </div>
       </div>
+    );
+  }
+
+  if (authState === 'authenticated') {
+    return (
+      <EmptyState
+        icon={<Calendar size={28} />}
+        title="Noch keine Zyklusdaten"
+        description="Trage deine erste Basaltemperatur ein oder probiere den Demo-Modus aus, um alle Funktionen kennenzulernen."
+        action={
+          <Button variant="secondary" onClick={enterDemo}>
+            Demo-Modus starten
+          </Button>
+        }
+      />
     );
   }
 

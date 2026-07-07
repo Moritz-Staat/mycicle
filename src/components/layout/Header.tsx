@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { Bell, Sun, Moon, Monitor } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
 import { useUIStore } from '../../store/uiStore';
+import { useUserStore } from '../../store/userStore';
 import { NotificationCenter } from './NotificationCenter';
+import { ProfileMenu } from '../ProfileMenu';
 
 interface HeaderProps {
   title: string;
@@ -17,6 +20,8 @@ const themeOrder: Array<'light' | 'dark' | 'system'> = ['light', 'dark', 'system
 
 export function Header({ title }: HeaderProps) {
   const { unreadCount, notifOpen, setNotifOpen, theme, setTheme } = useUIStore();
+  const profile = useUserStore((s) => s.profile);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   const cycleTheme = () => {
     const idx = themeOrder.indexOf(theme);
@@ -54,7 +59,15 @@ export function Header({ title }: HeaderProps) {
             <NotificationCenter />
           </div>
 
-          <Avatar name="Sarah M." size="sm" />
+          <div className="relative">
+            <button
+              onClick={() => setProfileOpen(!profileOpen)}
+              className="rounded-full hover:ring-2 hover:ring-[#6F7CFF]/30 transition-all"
+            >
+              <Avatar name={profile.name} src={profile.avatar} size="sm" />
+            </button>
+            <ProfileMenu open={profileOpen} onClose={() => setProfileOpen(false)} />
+          </div>
         </div>
       </div>
     </header>
